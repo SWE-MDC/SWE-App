@@ -14,6 +14,7 @@
 		22AE06992AD45D3B00BE67AD /* SWE_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06982AD45D3B00BE67AD /* SWE_AppTests.swift */; };
 		22AE06A32AD45D3B00BE67AD /* SWE_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06A22AD45D3B00BE67AD /* SWE_AppUITests.swift */; };
 		22AE06A52AD45D3B00BE67AD /* SWE_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06A42AD45D3B00BE67AD /* SWE_AppUITestsLaunchTests.swift */; };
+		22AE06B22AD4710900BE67AD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06B12AD4710900BE67AD /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		22AE069E2AD45D3B00BE67AD /* SWE-AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SWE-AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AE06A22AD45D3B00BE67AD /* SWE_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWE_AppUITests.swift; sourceTree = "<group>"; };
 		22AE06A42AD45D3B00BE67AD /* SWE_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWE_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		22AE06B12AD4710900BE67AD /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				22AE06892AD45D3800BE67AD /* ContentView.swift */,
 				22AE068B2AD45D3A00BE67AD /* Assets.xcassets */,
 				22AE068D2AD45D3A00BE67AD /* Preview Content */,
+				22AE06B12AD4710900BE67AD /* Colors.swift */,
 			);
 			path = "SWE-App";
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22AE068A2AD45D3800BE67AD /* ContentView.swift in Sources */,
+				22AE06B22AD4710900BE67AD /* Colors.swift in Sources */,
 				22AE06882AD45D3800BE67AD /* SWE_AppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
