@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//add in account sign up 
+
 struct ContentView: View {
     @State private var username = ""
     @State private var password = ""
@@ -24,14 +26,12 @@ struct ContentView: View {
                     .offset(y: 120)
                     .scale(1.2)
                     .foregroundColor(.white)
-                
                
                 VStack {
                     Image("Logo")
                         .offset(y: -140)
                         .padding()
                     
-
                     Text("Login")
                         .font(.largeTitle)
                         .bold()
@@ -58,8 +58,11 @@ struct ContentView: View {
                     .background(Color.customPurple)
                     .cornerRadius(10)
                     
+                    
+                    
+                    NavigationLink(destination: SignUpView()) { Text("Create an account").padding(50)}
+                    
                     NavigationLink(destination: HomeScreenView(), isActive: $showingLoginScreen) {
-                        //Text("hello")
                     }
                                     
                     

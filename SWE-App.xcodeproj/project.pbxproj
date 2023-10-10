@@ -16,6 +16,7 @@
 		22AE06A52AD45D3B00BE67AD /* SWE_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06A42AD45D3B00BE67AD /* SWE_AppUITestsLaunchTests.swift */; };
 		22AE06B22AD4710900BE67AD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06B12AD4710900BE67AD /* Colors.swift */; };
 		22AE06B52AD5AEFE00BE67AD /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06B42AD5AEFE00BE67AD /* HomeScreenView.swift */; };
+		22AE06B72AD5BB8000BE67AD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06B62AD5BB8000BE67AD /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		22AE06A42AD45D3B00BE67AD /* SWE_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWE_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		22AE06B12AD4710900BE67AD /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		22AE06B42AD5AEFE00BE67AD /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		22AE06B62AD5BB8000BE67AD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				22AE068D2AD45D3A00BE67AD /* Preview Content */,
 				22AE06B12AD4710900BE67AD /* Colors.swift */,
 				22AE06B42AD5AEFE00BE67AD /* HomeScreenView.swift */,
+				22AE06B62AD5BB8000BE67AD /* SignUpView.swift */,
 			);
 			path = "SWE-App";
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22AE068A2AD45D3800BE67AD /* ContentView.swift in Sources */,
+				22AE06B72AD5BB8000BE67AD /* SignUpView.swift in Sources */,
 				22AE06B22AD4710900BE67AD /* Colors.swift in Sources */,
 				22AE06882AD45D3800BE67AD /* SWE_AppApp.swift in Sources */,
 				22AE06B52AD5AEFE00BE67AD /* HomeScreenView.swift in Sources */,
