@@ -35,7 +35,7 @@ struct SignUpView: View {
                     Image("Logo")
                         .position(x: width/2, y: 70)
                     
-                    Text("Enter Your Email")
+                    Text("Email")
                     
                     TextField("Email", text: $email)
                         .padding()
@@ -44,7 +44,7 @@ struct SignUpView: View {
                         .cornerRadius(10)
                     
                     //add logic to check password requirements
-                    Text("Enter a Password")
+                    Text("Password")
 
                     TextField("Password", text: $password)
                         .padding()
@@ -53,7 +53,7 @@ struct SignUpView: View {
                         .cornerRadius(10)
                     
                     //add in logic for confirming password
-                    Text("Confirm Your Password")
+                    Text("Confirm Password")
                 
                     TextField("Confirm Password", text: $confirmPassword)
                         .padding()
