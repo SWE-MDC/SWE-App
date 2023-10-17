@@ -31,35 +31,73 @@ struct SignUpView: View {
                     .ignoresSafeArea()
                     .position(x: width/2, y: 0)
                 
-                VStack {
-                    Image("Logo")
-                        .position(x: width/2, y: 70)
+                Image("Logo")
+                    .position(x: width/2, y: 70)
+                
+                
+                VStack(alignment: .leading) {
                     
+                   Spacer()
+                        .frame(height: 80)
+                    
+                    
+                    //fix magic numbers later
                     Text("Email")
+                        .font(.system(size:25))
+
+                        
                     
                     TextField("Email", text: $email)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
+
+                    Spacer()
+                        .frame(height: 20)
                     
                     //add logic to check password requirements
                     Text("Password")
-
+                        .font(.system(size:25))
+                    
                     TextField("Password", text: $password)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
                     
+                    
+                    Spacer()
+                        .frame(height: 20)
+                    
+                    
+                    
                     //add in logic for confirming password
                     Text("Confirm Password")
-                
+                        .font(.system(size:25))
+
+                    
                     TextField("Confirm Password", text: $confirmPassword)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
+                    
+                    
+                    if password != confirmPassword {
+                        //passwords dont match
+                    }
+                    
+                    Spacer()
+                        .frame(height: 40)
+                    
+                    Button("Continue") {
+                        //take to demographic screen
+                    }
+                    .foregroundColor(.white)
+                    .frame(width: 300, height: 50)
+                    .background(Color.customPurple)
+                    .cornerRadius(10)
                     
                 }
             }
