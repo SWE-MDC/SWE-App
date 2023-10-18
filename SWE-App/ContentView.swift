@@ -16,6 +16,8 @@ struct ContentView: View {
     @State private var wrongUsername = 0
     @State private var wrongPassword = 0
     @State private var showingLoginScreen = false
+    @State private var width = UIScreen.main.bounds.width
+    @State private var height = UIScreen.main.bounds.height
     
     @State private var token = ""
     
@@ -26,14 +28,16 @@ struct ContentView: View {
 
                 Color.customPurple.ignoresSafeArea()
                 Circle()
-                    .offset(y: 120)
+                    .offset(y: 90)
                     .scale(1.2)
                     .foregroundColor(.white)
+                Image("Logo")
+                    .position(x: 180, y: 110)
+                    .padding()
                
                 VStack {
-                    Image("Logo")
-                        .offset(y: -140)
-                        .padding()
+                    Spacer()
+                        .frame(height: 200)
                     
                     Text("Login")
                         .font(.largeTitle)
@@ -63,16 +67,24 @@ struct ContentView: View {
                     .cornerRadius(10)
                     
                     
-                    
                     NavigationLink(destination: SignUpView()) { Text("Create an account").padding(50)}
+//                    Spacer()
+//                        .frame(height: 0)
+
                     
                     NavigationLink(destination: HomeScreenView(), isActive: $showingLoginScreen) {
                     }
-                                    
+
                     
-                }
-            }
-        } .navigationBarHidden(true)
+                } //vstack
+
+
+            } //zstack
+            .ignoresSafeArea(.keyboard)
+
+        } //nav view
+        .navigationBarHidden(true)
+
     }
     
     func authenticateUser(username: String, password: String) {
@@ -114,13 +126,16 @@ struct ContentView: View {
                 print(responseJSON)
                 if status == 200 {
                     wrongPassword = 0
+                    showingLoginScreen = true
                     token = responseJSON["token"] as! String
                 } else {
                     wrongPassword = 2
                     print("Login failed", msg)
                 }
             }
+
         }
+
 
         task.resume()
     }

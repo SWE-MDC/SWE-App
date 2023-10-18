@@ -99,8 +99,9 @@ struct SignUpView: View {
                     .background(Color.customPurple)
                     .cornerRadius(10)
                     
-                }
-            }
+                } //vstack
+            } //zstack
+            .ignoresSafeArea(.keyboard)
         }
     }
 }
