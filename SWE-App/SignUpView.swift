@@ -16,6 +16,8 @@ struct SignUpView: View {
     @State private var username = ""
     @State private var password = ""
     @State private var confirmPassword = ""
+    @State private var errorMsg = ""
+    @State private var registerFailed = false;
 
 
     
@@ -73,7 +75,7 @@ struct SignUpView: View {
                     Text("Password")
                         .font(.system(size:25))
                     
-                    TextField("Password", text: $password)
+                    SecureField("Password", text: $password)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
@@ -90,7 +92,7 @@ struct SignUpView: View {
                         .font(.system(size:25))
 
                     
-                    TextField("Confirm Password", text: $confirmPassword)
+                    SecureField("Confirm Password", text: $confirmPassword)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
@@ -100,11 +102,19 @@ struct SignUpView: View {
                         .frame(height: 30)
                     
                     Button("Register") {
+                        errorMsg = ""
+                        registerFailed = false
                         if password != confirmPassword {
-                            print("password does not match with the confirm password")
+                            errorMsg = "password does not match with the confirm password"
+                            registerFailed = true
                         } else {
                             signup(email: email, username: username, password: password)
+                            if !registerFailed {
+                                // TODO: Negative to login view
+                            }
                         }
+                    }.alert(errorMsg, isPresented: $registerFailed) {
+                        Button("OK", role: .cancel) { }
                     }
                     .foregroundColor(.white)
                     .frame(width: 300, height: 50)
@@ -123,7 +133,6 @@ struct SignUpView: View {
     func signup(email: String,
                 username: String,
                 password: String) {
-        var error_msg = ""
         let semaphore = DispatchSemaphore(value: 0)  //1. create a counting semaphore
 
         // prepare json data
@@ -154,22 +163,20 @@ struct SignUpView: View {
                     print("Signup successfully", msg)
                     // TODO Take user to the login screen
                 } else {
-                    error_msg = msg
+                    errorMsg = msg
                 }
                 semaphore.signal()
             }
-
         }
-
 
         task.resume()
         semaphore.wait()
         
-        if error_msg == "" {
+        if errorMsg == "" {
             print("Signup successfully")
         } else {
-            print("Signup failed", error_msg)
-            // TODO: Pop up an alert
+            print("Signup failed", errorMsg)
+            registerFailed = true
         }
 
     }
