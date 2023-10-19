@@ -14,6 +14,7 @@ struct SignUpView: View {
     @State private var height = UIScreen.main.bounds.height
     
     @State private var email = ""
+    @State private var username = ""
     @State private var password = ""
     @State private var confirmPassword = ""
 
@@ -38,7 +39,7 @@ struct SignUpView: View {
                 VStack(alignment: .leading) {
                     
                    Spacer()
-                        .frame(height: 80)
+                        .frame(height: 160)
                     
                     
                     //fix magic numbers later
@@ -48,6 +49,20 @@ struct SignUpView: View {
                         
                     
                     TextField("Email", text: $email)
+                        .padding()
+                        .frame(width: 300, height: 50)
+                        .background(Color.black.opacity(0.05))
+                        .cornerRadius(10)
+
+                    Spacer()
+                        .frame(height: 20)
+                    
+                    Text("Username")
+                        .font(.system(size:25))
+
+                        
+                    
+                    TextField("Username", text: $username)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
