@@ -39,18 +39,23 @@ struct HomeScreenView: View {
     
     @State private var width = UIScreen.main.bounds.width
     @State private var height = UIScreen.main.bounds.height
+    @State var menuOpened = false;
 
     var body: some View {
         ZStack{
-            Button(action : {
-                //openMenu
-            }, label: {
-                Text("Open Menu")
-                    .frame(width: 300, height: 50)
-                    .background(Color(.systemBlue))
+            if !menuOpened {
+                Button(action : {
+                    //openMenu
+                    self.menuOpened.toggle()
+                }, label: {
+                    Text("Open Menu")
+                        .foregroundColor(Color.white)
+                        .frame(width: 300, height: 50)
+                        .background(Color(.systemBlue))
+                }
+                )
+                SideMenu()
             }
-            )
-            
         } .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
 }
