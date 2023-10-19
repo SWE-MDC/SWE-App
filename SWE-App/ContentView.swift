@@ -67,9 +67,11 @@ struct ContentView: View {
                     .cornerRadius(10)
                     
                     
-                    NavigationLink(destination: SignUpView()) { Text("Create an account").padding(50)}
+                    NavigationLink(destination: SignUpView()) { Text("Create an account").padding(15)}
 //                    Spacer()
 //                        .frame(height: 0)
+                    
+                    NavigationLink(destination: ResetPassword()) { Text("Reset Password")}
 
                     
                     NavigationLink(destination: HomeScreenView(), isActive: $showingLoginScreen) {
