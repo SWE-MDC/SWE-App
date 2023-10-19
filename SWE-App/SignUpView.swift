@@ -39,7 +39,7 @@ struct SignUpView: View {
                 VStack(alignment: .leading) {
                     
                    Spacer()
-                        .frame(height: 160)
+                        .frame(height: 200)
                     
                     
                     //fix magic numbers later
@@ -104,15 +104,18 @@ struct SignUpView: View {
                     }
                     
                     Spacer()
-                        .frame(height: 40)
+                        .frame(height: 30)
                     
-                    Button("Continue") {
+                    Button("Register") {
                         //take to demographic screen
                     }
                     .foregroundColor(.white)
                     .frame(width: 300, height: 50)
                     .background(Color.customPurple)
                     .cornerRadius(10)
+                    
+                    NavigationLink(destination: ContentView()) { Text("Back to Login")}
+                        .frame(width: 300, height: 50)
                     
                 } //vstack
             } //zstack
