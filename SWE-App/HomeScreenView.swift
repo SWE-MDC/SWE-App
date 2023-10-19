@@ -12,25 +12,46 @@ import SwiftUI
 //check into current event
 //settings/view profile
 
+struct MenuContent: View {
+    var body: some View {
+        ZStack{
+            
+        }
+        
+    }
+    
+}
+
+
+struct SideMenu: View {
+    var body: some View {
+        ZStack{
+            
+        }
+        
+    }
+    
+}
+
+
+
 struct HomeScreenView: View {
     
     @State private var width = UIScreen.main.bounds.width
     @State private var height = UIScreen.main.bounds.height
-    
 
     var body: some View {
-        NavigationView {
-            VStack {
-                Button("Event Login") {
-                    //take to event login
-                }
-                .foregroundColor(.white)
-                .frame(width: 300, height: 200)
-                .background(Color.customPurple)
-                .cornerRadius(30)
+        ZStack{
+            Button(action : {
+                //openMenu
+            }, label: {
+                Text("Open Menu")
+                    .frame(width: 300, height: 50)
+                    .background(Color(.systemBlue))
             }
-
-        }
+            )
+            
+        } .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
 }
 
