@@ -23,7 +23,9 @@ struct MenuContent: View {
     let items: [MenuItem] = [
         MenuItem(text: "Home"),
         MenuItem(text: "Settings"),
-        MenuItem(text: "Profile")
+        MenuItem(text: "Profile"),
+        MenuItem(text: "Log Out")
+
     ]
     var body: some View {
         ZStack{
@@ -99,14 +101,69 @@ struct HomeScreenView: View {
                 }, label: {
                     Text("Open Menu")
                         .foregroundColor(Color.white)
-                        .frame(width: 300, height: 50)
-                        .background(Color(.systemBlue))
+                        .frame(width: 50, height: 50)
+                        .background(Color(Color.customPurple))
+                        .position(x: 50, y: 90)
                 })
-               
+                
             }
+            
+            
+            VStack{
+                Button("Event Check In") {
+                    //take to event screen
+                }
+                .foregroundColor(.white)
+                .frame(width: 300, height: 300)
+                .background(Color.customPurple)
+                .cornerRadius(10)
+                .position(x: width/2, y: height/2)
+                
+                HStack{
+                    Button("Calendar") {
+                        //take to calendar
+                    }
+                    .foregroundColor(.white)
+                    .frame(width: 100, height: 100)
+                    .background(Color.customPurple)
+                    .cornerRadius(10)
+                    
+                    Button("Directory") {
+                        //take to directory
+                    }
+                    .foregroundColor(.white)
+                    .frame(width: 100, height: 100)
+                    .background(Color.customPurple)
+                    .cornerRadius(10)
+                    
+                    Button("Extra idk") {
+                        //take to somewhere
+                    }
+                    .foregroundColor(.white)
+                    .frame(width: 100, height: 100)
+                    .background(Color.customPurple)
+                    .cornerRadius(10)
+                    
+                    
+                } .padding()
+
+            }
+            
+            
+            
             SideMenu(width: width/1.6, menuOpened: menuOpened, toggleMenu: toggleMenu)
+
+            
+            
         } .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        
+        
+      
+        
+
     }
+    
+    
     func toggleMenu() {
         menuOpened.toggle()
     }
