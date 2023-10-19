@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SignUpView: View {
-    
     //not suitable for rotation or scaling
     @State private var width = UIScreen.main.bounds.width
     @State private var height = UIScreen.main.bounds.height
@@ -19,9 +18,6 @@ struct SignUpView: View {
     @State private var confirmPassword = ""
 
 
-
-
-    
     
     var body: some View {
         NavigationView {
@@ -127,6 +123,9 @@ struct SignUpView: View {
     func signup(email: String,
                 username: String,
                 password: String) {
+        var error_msg = ""
+        let semaphore = DispatchSemaphore(value: 0)  //1. create a counting semaphore
+
         // prepare json data
         let json: [String: Any] = ["email": email,
                                    "username": username,
@@ -140,6 +139,7 @@ struct SignUpView: View {
         request.httpBody = jsonData
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")  // the request is JSON
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")        // the expected response is also JSON
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "No data")
@@ -154,15 +154,24 @@ struct SignUpView: View {
                     print("Signup successfully", msg)
                     // TODO Take user to the login screen
                 } else {
-                    print("Signup failed", msg)
-                    // TODO Popup a message
+                    error_msg = msg
                 }
+                semaphore.signal()
             }
 
         }
 
 
         task.resume()
+        semaphore.wait()
+        
+        if error_msg == "" {
+            print("Signup successfully")
+        } else {
+            print("Signup failed", error_msg)
+            // TODO: Pop up an alert
+        }
+
     }
 }
 

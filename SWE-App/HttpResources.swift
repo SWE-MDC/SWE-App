@@ -1,4 +1,4 @@
-SWE-App/HttpResources.swift//
+//
 //  HttpResources.swift
 //  SWE-App
 //
