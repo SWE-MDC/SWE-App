@@ -52,6 +52,7 @@ struct SignUpView: View {
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
+                        .textInputAutocapitalization(.never)
                         .cornerRadius(10)
 
                     Spacer()
@@ -66,6 +67,7 @@ struct SignUpView: View {
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
+                        .textInputAutocapitalization(.never)
                         .cornerRadius(10)
 
                     Spacer()
@@ -98,16 +100,15 @@ struct SignUpView: View {
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
                     
-                    
-                    if password != confirmPassword {
-                        //passwords dont match
-                    }
-                    
                     Spacer()
                         .frame(height: 30)
                     
                     Button("Register") {
-                        //this will initiate an email to be sent to confirm account creation.
+                        if password != confirmPassword {
+                            print("password does not match with the confirm password")
+                        } else {
+                            signup(email: email, username: username, password: password)
+                        }
                     }
                     .foregroundColor(.white)
                     .frame(width: 300, height: 50)
@@ -121,6 +122,47 @@ struct SignUpView: View {
             } //zstack
             .ignoresSafeArea(.keyboard)
         }
+    }
+    
+    func signup(email: String,
+                username: String,
+                password: String) {
+        // prepare json data
+        let json: [String: Any] = ["email": email,
+                                   "username": username,
+                                   "password": password]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        // create post request
+        let url = URL(string: HttpResources.url_signup)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        // insert json data to the request
+        request.httpBody = jsonData
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")  // the request is JSON
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")        // the expected response is also JSON
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                let status = responseJSON["status"] as! Int
+                let msg = responseJSON["message"] as! String
+                print(responseJSON)
+                if status == 200 {
+                    print("Signup successfully", msg)
+                    // TODO Take user to the login screen
+                } else {
+                    print("Signup failed", msg)
+                    // TODO Popup a message
+                }
+            }
+
+        }
+
+
+        task.resume()
     }
 }
 
