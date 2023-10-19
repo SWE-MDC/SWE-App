@@ -107,7 +107,7 @@ struct SignUpView: View {
                         .frame(height: 30)
                     
                     Button("Register") {
-                        //take to demographic screen
+                        //this will initiate an email to be sent to confirm account creation.
                     }
                     .foregroundColor(.white)
                     .frame(width: 300, height: 50)
