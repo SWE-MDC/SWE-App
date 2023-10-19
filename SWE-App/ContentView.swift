@@ -105,7 +105,7 @@ struct ContentView: View {
 //        }
         
         // prepare json data
-        let json: [String: Any] = ["email": username,
+        let json: [String: Any] = ["usernameOrEmail": username,
                                    "password": password]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         // create post request

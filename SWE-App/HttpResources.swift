@@ -1,4 +1,4 @@
-//
+SWE-App/HttpResources.swift//
 //  HttpResources.swift
 //  SWE-App
 //
@@ -10,4 +10,5 @@ import Foundation
 struct HttpResources {
     static var url_base = "http://hp.gengl.me:8081"
     static var url_login = url_base + "/api/v1/auth/signin"
+    static var url_signup = url_base + "/api/v1/auth/signup"
 }
