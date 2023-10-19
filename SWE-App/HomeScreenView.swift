@@ -14,6 +14,9 @@ import SwiftUI
 struct MenuItem: Identifiable {
     var id = UUID()
     var text = String()
+    let handler: () -> Void = {
+        print("tapped item")
+    }
 }
 
 struct MenuContent: View {
@@ -24,20 +27,25 @@ struct MenuContent: View {
     ]
     var body: some View {
         ZStack{
-            Color(Color.red)
+            Color(Color.customPurple)
             
             VStack(alignment: .leading, spacing: 0) {
                 ForEach(items) { item in
                     HStack{
                         Text(item.text)
                             .bold()
+                            .foregroundColor(Color.white)
+                            .font(.system(size: 22))
                             .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                        
+                        Spacer()
                     }
+                    .padding()
                     
                 }
                 Spacer()
             }
-            
+            .padding(.top, 50)
         }
         
     }
@@ -96,7 +104,7 @@ struct HomeScreenView: View {
                 })
                
             }
-            SideMenu(width: width/2, menuOpened: menuOpened, toggleMenu: toggleMenu)
+            SideMenu(width: width/1.6, menuOpened: menuOpened, toggleMenu: toggleMenu)
         } .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
     func toggleMenu() {
