@@ -111,14 +111,24 @@ struct HomeScreenView: View {
             
             
             VStack{
-                Button("Event Check In") {
+                //change this to align with current event
+                Text("No Current Events")
+                    .multilineTextAlignment(.center)
+                    .font(.system(size: 50, design: .rounded)
+                        .weight(.heavy))
+                    .foregroundColor(Color.white)
+                    .position(x: width/2, y: height/3)
+                
+                Button("Check In") {
                     //take to event screen
                 }
+                .font(.system(size: 40, design: .rounded)
+                    .weight(.bold))
                 .foregroundColor(Color.customPurple)
-                .frame(width: 300, height: 300)
+                .frame(width: 250, height: 250)
                 .background(Color.white)
                 .cornerRadius(10)
-                .position(x: width/2, y: height/2)
+                .position(x: width/2, y: height/7)
                 
                 HStack{
                     Button("Calendar") {
