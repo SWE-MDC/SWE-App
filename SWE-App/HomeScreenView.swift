@@ -100,10 +100,13 @@ struct HomeScreenView: View {
                     //openMenu
                     self.menuOpened.toggle()
                 }, label: {
-                    Text("Open Menu")
-                        .foregroundColor(Color.customPurple)
-                        .frame(width: 50, height: 50)
-                        .background(Color(Color.white))
+                    Image("Settings")
+//                    Text("Open Menu")
+//                        .foregroundColor(Color.customPurple)
+//                        .frame(width: 50, height: 50)
+//                        .background(Color(Color.white))
+                        .resizable()
+                        .frame(width: 70, height: 70)
                         .position(x: 50, y: 90)
                 })
                 
@@ -134,24 +137,32 @@ struct HomeScreenView: View {
                     Button("Calendar") {
                         //take to calendar
                     }
+                    .font(.system(size: 20, design: .rounded)
+                        .weight(.bold))
                     .foregroundColor(Color.customPurple)
-                    .frame(width: 100, height: 100)
+                    .frame(width: 120, height: 120)
                     .background(Color.white)
                     .cornerRadius(10)
                     
                     Button("Directory") {
                         //take to directory
                     }
+                    .font(.system(size: 20, design: .rounded)
+                        .weight(.bold))
                     .foregroundColor(Color.customPurple)
-                    .frame(width: 100, height: 100)
+                    .frame(width: 120, height: 120)
                     .background(Color.white)
                     .cornerRadius(10)
+                    .padding(0.4)
+
                     
                     Button("Extra idk") {
                         //take to somewhere
                     }
+                    .font(.system(size: 20, design: .rounded)
+                        .weight(.bold))
                     .foregroundColor(Color.customPurple)
-                    .frame(width: 100, height: 100)
+                    .frame(width: 120, height: 120)
                     .background(Color.white)
                     .cornerRadius(10)
                     
