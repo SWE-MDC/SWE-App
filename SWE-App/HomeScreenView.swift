@@ -29,14 +29,14 @@ struct MenuContent: View {
     ]
     var body: some View {
         ZStack{
-            Color(Color.customPurple)
+            Color(Color.white)
             
             VStack(alignment: .leading, spacing: 0) {
                 ForEach(items) { item in
                     HStack{
                         Text(item.text)
                             .bold()
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color.customPurple)
                             .font(.system(size: 22))
                             .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
                         
@@ -94,15 +94,16 @@ struct HomeScreenView: View {
 
     var body: some View {
         ZStack{
+            Color.customPurple
             if !menuOpened {
                 Button(action : {
                     //openMenu
                     self.menuOpened.toggle()
                 }, label: {
                     Text("Open Menu")
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.customPurple)
                         .frame(width: 50, height: 50)
-                        .background(Color(Color.customPurple))
+                        .background(Color(Color.white))
                         .position(x: 50, y: 90)
                 })
                 
@@ -113,9 +114,9 @@ struct HomeScreenView: View {
                 Button("Event Check In") {
                     //take to event screen
                 }
-                .foregroundColor(.white)
+                .foregroundColor(Color.customPurple)
                 .frame(width: 300, height: 300)
-                .background(Color.customPurple)
+                .background(Color.white)
                 .cornerRadius(10)
                 .position(x: width/2, y: height/2)
                 
@@ -123,44 +124,35 @@ struct HomeScreenView: View {
                     Button("Calendar") {
                         //take to calendar
                     }
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.customPurple)
                     .frame(width: 100, height: 100)
-                    .background(Color.customPurple)
+                    .background(Color.white)
                     .cornerRadius(10)
                     
                     Button("Directory") {
                         //take to directory
                     }
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.customPurple)
                     .frame(width: 100, height: 100)
-                    .background(Color.customPurple)
+                    .background(Color.white)
                     .cornerRadius(10)
                     
                     Button("Extra idk") {
                         //take to somewhere
                     }
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.customPurple)
                     .frame(width: 100, height: 100)
-                    .background(Color.customPurple)
+                    .background(Color.white)
                     .cornerRadius(10)
                     
                     
                 } .padding()
 
             }
-            
-            
-            
+
             SideMenu(width: width/1.6, menuOpened: menuOpened, toggleMenu: toggleMenu)
 
-            
-            
         } .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        
-        
-      
-        
-
     }
     
     
