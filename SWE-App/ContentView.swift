@@ -60,6 +60,8 @@ struct ContentView: View {
                         .border(.red, width: CGFloat(wrongPassword))
                     
                     Button("Login") {
+                        loginFailed = false
+                        errorMsg = ""
                         authenticateUser(username: username, password: password)
                     }.alert(errorMsg, isPresented: $loginFailed) {
                         Button("OK", role: .cancel) { }
