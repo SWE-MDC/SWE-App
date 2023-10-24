@@ -133,7 +133,7 @@ struct SignUpView: View {
     func signup(email: String,
                 username: String,
                 password: String) {
-        let semaphore = DispatchSemaphore(value: 0)  //1. create a counting semaphore
+        let semaphore = DispatchSemaphore(value: 0)
 
         // prepare json data
         let json: [String: Any] = ["email": email,

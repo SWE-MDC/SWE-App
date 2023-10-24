@@ -18,7 +18,8 @@ struct ContentView: View {
     @State private var showingLoginScreen = false
     @State private var width = UIScreen.main.bounds.width
     @State private var height = UIScreen.main.bounds.height
-    
+    @State private var loginFailed = false;
+    @State private var errorMsg = ""
     @State private var token = ""
     
     
@@ -60,6 +61,8 @@ struct ContentView: View {
                     
                     Button("Login") {
                         authenticateUser(username: username, password: password)
+                    }.alert(errorMsg, isPresented: $loginFailed) {
+                        Button("OK", role: .cancel) { }
                     }
                     .foregroundColor(.white)
                     .frame(width: 300, height: 50)
@@ -90,20 +93,7 @@ struct ContentView: View {
     }
     
     func authenticateUser(username: String, password: String) {
-        //change later for our own database
-        //use "usertest" as the fake username and "passtest" as the fake password
-//        if username.lowercased() == "usertest" {
-//            wrongUsername = 0
-//            if password.lowercased() == "passtest" {
-//                wrongPassword = 0
-//                showingLoginScreen = true
-//            } else {
-//                wrongPassword = 2
-//            }
-//        } else {
-//            wrongUsername = 2
-//        }
-        
+        let semaphore = DispatchSemaphore(value: 0)
         // prepare json data
         let json: [String: Any] = ["usernameOrEmail": username,
                                    "password": password]
@@ -132,14 +122,21 @@ struct ContentView: View {
                     token = responseJSON["token"] as! String
                 } else {
                     wrongPassword = 2
-                    print("Login failed", msg)
+                    errorMsg = msg
                 }
+                semaphore.signal()
             }
-
         }
 
 
         task.resume()
+        semaphore.wait()
+        if errorMsg == "" {
+            print("Sign in successfully")
+        } else {
+            print("Sign in failed", errorMsg)
+            loginFailed = true
+        }
     }
 }
 
