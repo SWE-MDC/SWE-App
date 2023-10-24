@@ -19,83 +19,81 @@ struct HomeScreenView: View {
     @State var menuOpened = false;
 
     var body: some View {
-        ZStack{
-            Color.customPurple
-            Button("Log Out") {
-                
-            }
-            .frame(width: 120, height: 120, alignment: .trailing)
-            .font(.system(size: 28, design: .rounded)
-                .weight(.bold))
-            .foregroundColor(Color.white)
-            .cornerRadius(10)
-            .position(x: width/1.3, y: height/9)
-            
-            VStack{
-                
-               
-                
-                
-                
-                //change this to align with current event
-                Text("No Current Events")
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 50, design: .rounded)
-                        .weight(.heavy))
-                    .foregroundColor(Color.white)
-                    .position(x: width/2, y: height/3)
-                
-                Button("Check In") {
-                    //take to event screen
+        NavigationView{
+            ZStack{
+                Color.customPurple
+                NavigationLink(destination: ContentView()) {
+                    Text("Log Out")
                 }
-                .font(.system(size: 40, design: .rounded)
+                .frame(width: 120, height: 120, alignment: .trailing)
+                .font(.system(size: 28, design: .rounded)
                     .weight(.bold))
-                .foregroundColor(Color.customPurple)
-                .frame(width: 250, height: 250)
-                .background(Color.white)
+                .foregroundColor(Color.white)
                 .cornerRadius(10)
-                .position(x: width/2, y: height/7)
+                .position(x: width/1.3, y: height/9)
                 
-                HStack{
-                    Button("Calendar") {
-                        //take to calendar
+                VStack{
+                    
+                    //change this to align with current event
+                    Text("No Current Events")
+                        .multilineTextAlignment(.center)
+                        .font(.system(size: 50, design: .rounded)
+                            .weight(.heavy))
+                        .foregroundColor(Color.white)
+                        .position(x: width/2, y: height/3)
+                    
+                    Button("Check In") {
+                        //take to event screen
                     }
-                    .font(.system(size: 20, design: .rounded)
+                    .font(.system(size: 40, design: .rounded)
                         .weight(.bold))
                     .foregroundColor(Color.customPurple)
-                    .frame(width: 120, height: 120)
+                    .frame(width: 250, height: 250)
                     .background(Color.white)
                     .cornerRadius(10)
+                    .position(x: width/2, y: height/7)
                     
-                    Button("Directory") {
-                        //take to directory
-                    }
-                    .font(.system(size: 20, design: .rounded)
-                        .weight(.bold))
-                    .foregroundColor(Color.customPurple)
-                    .frame(width: 120, height: 120)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .padding(0.4)
-
+                    HStack{
+                        Button("Calendar") {
+                            //take to calendar
+                        }
+                        .font(.system(size: 20, design: .rounded)
+                            .weight(.bold))
+                        .foregroundColor(Color.customPurple)
+                        .frame(width: 120, height: 120)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        
+                        Button("Directory") {
+                            //take to directory
+                        }
+                        .font(.system(size: 20, design: .rounded)
+                            .weight(.bold))
+                        .foregroundColor(Color.customPurple)
+                        .frame(width: 120, height: 120)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .padding(0.4)
+                        
+                        
+                        Button("Profile") {
+                            //take to settings
+                        }
+                        .font(.system(size: 20, design: .rounded)
+                            .weight(.bold))
+                        .foregroundColor(Color.customPurple)
+                        .frame(width: 120, height: 120)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        
+                        
+                    } .padding()
                     
-                    Button("Profile") {
-                        //take to settings
-                    }
-                    .font(.system(size: 20, design: .rounded)
-                        .weight(.bold))
-                    .foregroundColor(Color.customPurple)
-                    .frame(width: 120, height: 120)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    
-                    
-                } .padding()
-
-            }
-
-
-        } .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                }
+                
+                
+            } .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        }
     }
 
 }
