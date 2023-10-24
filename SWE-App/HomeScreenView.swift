@@ -21,9 +21,22 @@ struct HomeScreenView: View {
     var body: some View {
         ZStack{
             Color.customPurple
-            
+            Button("Log Out") {
+                
+            }
+            .frame(width: 120, height: 120, alignment: .trailing)
+            .font(.system(size: 28, design: .rounded)
+                .weight(.bold))
+            .foregroundColor(Color.white)
+            .cornerRadius(10)
+            .position(x: width/1.3, y: height/9)
             
             VStack{
+                
+               
+                
+                
+                
                 //change this to align with current event
                 Text("No Current Events")
                     .multilineTextAlignment(.center)
@@ -66,7 +79,7 @@ struct HomeScreenView: View {
                     .padding(0.4)
 
                     
-                    Button("Settings") {
+                    Button("Profile") {
                         //take to settings
                     }
                     .font(.system(size: 20, design: .rounded)
