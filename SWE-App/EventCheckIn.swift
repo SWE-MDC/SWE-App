@@ -62,7 +62,6 @@ struct EventCheckIn: View {
                     .background(Color.customPurple)
                     .cornerRadius(10)
                     
-// TODO: Change destination link once home screen is available.
                     NavigationLink(destination: HomeScreenView()) { Text("Back to Home Screen")}
                         .frame(width: 300, height: 50)
 

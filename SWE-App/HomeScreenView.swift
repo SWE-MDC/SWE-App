@@ -34,7 +34,8 @@ struct HomeScreenView: View {
                 
                 VStack{
                     
-                    //change this to align with current event
+//TODO: have this text change with the name of the current event either pulled from the database or entered manually by an admin
+
                     Text("No Current Events")
                         .multilineTextAlignment(.center)
                         .font(.system(size: 50, design: .rounded)
