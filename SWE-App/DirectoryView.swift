@@ -8,8 +8,9 @@
 import SwiftUI
 import Foundation
 
+//TODO: add a go back home button
 
-struct DirectoryView: View { 
+struct DirectoryView: View {
     var body: some View {
         List(contacts) { contact in 
             ContactRow(contact: contact)

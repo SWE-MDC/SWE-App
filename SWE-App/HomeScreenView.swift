@@ -66,8 +66,9 @@ struct HomeScreenView: View {
                         .background(Color.white)
                         .cornerRadius(10)
                         
-                        Button("Directory") {
+                        NavigationLink(destination: DirectoryView()) {
                             //take to directory
+                            Text("Directory")
                         }
                         .font(.system(size: 20, design: .rounded)
                             .weight(.bold))
