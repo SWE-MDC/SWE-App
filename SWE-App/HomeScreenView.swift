@@ -42,8 +42,9 @@ struct HomeScreenView: View {
                         .foregroundColor(Color.white)
                         .position(x: width/2, y: height/3)
                     
-                    Button("Check In") {
+                    NavigationLink(destination: EventCheckIn()) {
                         //take to event screen
+                        Text("Check In")
                     }
                     .font(.system(size: 40, design: .rounded)
                         .weight(.bold))
