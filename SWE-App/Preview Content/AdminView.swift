@@ -10,6 +10,9 @@ import SwiftUI
 struct AdminView: View {
     @State private var eventName = ""
     @State private var eventDate = ""
+    @State private var eventDetails = ""
+    @State private var eventLocation = ""
+
 
     
     
@@ -28,6 +31,20 @@ struct AdminView: View {
                 TextField("Event Date", text: $eventDate)
                     .padding()
                     .frame(width: 300, height: 50)
+                    .background(Color.black.opacity(0.05))
+                    .cornerRadius(10)
+                    .textInputAutocapitalization(.never)
+                
+                TextField("Event Location", text: $eventLocation)
+                    .padding()
+                    .frame(width: 300, height: 50)
+                    .background(Color.black.opacity(0.05))
+                    .cornerRadius(10)
+                    .textInputAutocapitalization(.never)
+                
+                TextField("Event Details", text: $eventDetails)
+                    .padding()
+                    .frame(width: 300, height: 200)
                     .background(Color.black.opacity(0.05))
                     .cornerRadius(10)
                     .textInputAutocapitalization(.never)
