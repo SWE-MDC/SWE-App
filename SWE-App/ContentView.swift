@@ -77,6 +77,12 @@ struct ContentView: View {
 //                        .frame(height: 0)
                     
                     NavigationLink(destination: ResetPassword()) { Text("Reset Password")}
+                    Spacer()
+                        .frame(height: 20)
+                    
+                    NavigationLink(destination: AdminView()) {
+                        Text("ADMIN VIEW")
+                    }
 
                     
                     NavigationLink(destination: HomeScreenView(), isActive: $showingLoginScreen) {

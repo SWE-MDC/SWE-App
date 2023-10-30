@@ -19,6 +19,7 @@
 		22AE06B72AD5BB8000BE67AD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06B62AD5BB8000BE67AD /* SignUpView.swift */; };
 		22EE370D2AF000B800702B94 /* DirectoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE370C2AF000B800702B94 /* DirectoryView.swift */; };
 		22EE370F2AF0127100702B94 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE370E2AF0127100702B94 /* Contact.swift */; };
+		22EE37112AF068A400702B94 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE37102AF068A300702B94 /* AdminView.swift */; };
 		EC7A1D682ADF0665006EF679 /* HttpResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A1D672ADF0665006EF679 /* HttpResources.swift */; };
 		FA63158E2AE179990056FBEC /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63158D2AE179990056FBEC /* ResetPassword.swift */; };
 		FA6315902AE17E820056FBEC /* EventCheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63158F2AE17E820056FBEC /* EventCheckIn.swift */; };
@@ -57,6 +58,7 @@
 		22AE06B62AD5BB8000BE67AD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		22EE370C2AF000B800702B94 /* DirectoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryView.swift; sourceTree = "<group>"; };
 		22EE370E2AF0127100702B94 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		22EE37102AF068A300702B94 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
 		EC7A1D672ADF0665006EF679 /* HttpResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResources.swift; sourceTree = "<group>"; };
 		ECFAC11D2AD60D43001D8391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FA63158D2AE179990056FBEC /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				22AE068E2AD45D3A00BE67AD /* Preview Assets.xcassets */,
+				22EE37102AF068A300702B94 /* AdminView.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			files = (
 				22EE370D2AF000B800702B94 /* DirectoryView.swift in Sources */,
 				22AE068A2AD45D3800BE67AD /* ContentView.swift in Sources */,
+				22EE37112AF068A400702B94 /* AdminView.swift in Sources */,
 				22EE370F2AF0127100702B94 /* Contact.swift in Sources */,
 				22AE06B72AD5BB8000BE67AD /* SignUpView.swift in Sources */,
 				FA63158E2AE179990056FBEC /* ResetPassword.swift in Sources */,
