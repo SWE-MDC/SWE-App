@@ -35,7 +35,7 @@ struct HomeScreenView: View {
                         .weight(.bold))
                     .foregroundColor(Color.white)
                     .cornerRadius(10)
-                    .position(x: -70, y: height/2)
+                    .position(x: -50, y: height/2)
                     
                     
                     NavigationLink(destination: LoginView()) {
@@ -139,7 +139,7 @@ struct HomeScreenView: View {
                 }
                 
             } .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        }
+        } .navigationBarHidden(true)
     }
 
     func getEvents() {
