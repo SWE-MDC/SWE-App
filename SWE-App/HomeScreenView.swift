@@ -26,6 +26,18 @@ struct HomeScreenView: View {
                 Color.customPurple
                 
                 HStack {
+//TODO: hide this button for non admin users
+                    NavigationLink(destination: AdminView()) {
+                        Text("Create Event")
+                    }
+                    .frame(width: 120, height: 120, alignment: .leading)
+                    .font(.system(size: 28, design: .rounded)
+                        .weight(.bold))
+                    .foregroundColor(Color.white)
+                    .cornerRadius(10)
+                    .position(x: -70, y: height/2)
+                    
+                    
                     NavigationLink(destination: LoginView()) {
                         Text("Log Out")
                     }
@@ -34,16 +46,10 @@ struct HomeScreenView: View {
                         .weight(.bold))
                     .foregroundColor(Color.white)
                     .cornerRadius(10)
+                    .position(x: 10, y: height/2)
                     
                     
-                    NavigationLink(destination: AdminView()) {
-                        Text("Create Event")
-                    }
-                    //.frame(width: 120, height: 120, alignment: .trailing)
-                    .font(.system(size: 28, design: .rounded)
-                        .weight(.bold))
-                    .foregroundColor(Color.white)
-                    .cornerRadius(10)
+                  
   
                 }
 //                .frame(width: 120, height: 120, alignment: .trailing)
@@ -94,8 +100,8 @@ struct HomeScreenView: View {
                     .position(x: width/2, y: height/7)
                     
                     HStack{
-                        Button("Calendar") {
-                            //take to calendar
+                        NavigationLink(destination: EventView()) {
+                            Text("Future Events")
                         }
                         .font(.system(size: 20, design: .rounded)
                             .weight(.bold))
