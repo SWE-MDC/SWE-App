@@ -17,12 +17,14 @@ struct HomeScreenView: View {
     @State private var width = UIScreen.main.bounds.width
     @State private var height = UIScreen.main.bounds.height
     @State var menuOpened = false;
+    @State var events: [Event] = []
+    @State var eventsReady: Bool = false
 
     var body: some View {
         NavigationView{
             ZStack{
                 Color.customPurple
-                NavigationLink(destination: ContentView()) {
+                NavigationLink(destination: LoginView()) {
                     Text("Log Out")
                 }
                 .frame(width: 120, height: 120, alignment: .trailing)
@@ -36,12 +38,25 @@ struct HomeScreenView: View {
                     
 //TODO: have this text change with the name of the current event either pulled from the database or entered manually by an admin
 
-                    Text("No Current Events")
-                        .multilineTextAlignment(.center)
-                        .font(.system(size: 50, design: .rounded)
-                            .weight(.heavy))
-                        .foregroundColor(Color.white)
-                        .position(x: width/2, y: height/3)
+//                    Text("No Current Events")
+//                        .multilineTextAlignment(.center)
+//                        .font(.system(size: 50, design: .rounded)
+//                            .weight(.heavy))
+//                        .foregroundColor(Color.white)
+//                        .position(x: width/2, y: height/3)
+                    Button("Show Events")
+                    {
+                        eventsReady = false
+                        getEvents()
+                    }.foregroundColor(.customPurple)
+                        .frame(width: 250, height: 50)
+                        .font(.system(size: 20, design: .rounded))
+                        .background(Color.white)
+                        .cornerRadius(10).position(x: width/2, y: height/3)
+                    
+                    
+                    NavigationLink(destination: EventListView(events: $events), isActive: $eventsReady) {
+                    }
                     
                     NavigationLink(destination: EventCheckIn()) {
                         //take to event screen
@@ -94,11 +109,43 @@ struct HomeScreenView: View {
                     
                 }
                 
-                
             } .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         }
     }
 
+    func getEvents() {
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        let request = HttpResources.prepareGetRequest(s_url: HttpResources.url_list_events + "?limit=100", token: GlobalStatus.token)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let httpResponse = response as? HTTPURLResponse {
+                print(httpResponse.statusCode)
+            }
+            
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                semaphore.signal()
+                return
+            }
+            guard let eventResp = try?JSONDecoder().decode(EventResponse.self, from: data) else {
+                print("Failed to parse json")
+                semaphore.signal()
+                return
+            }
+            
+            if eventResp.status == 200 {
+                events = eventResp.events
+            }
+            semaphore.signal()
+            
+        }
+
+
+        task.resume()
+        semaphore.wait()
+        eventsReady = true
+    }
 }
 
 #Preview {

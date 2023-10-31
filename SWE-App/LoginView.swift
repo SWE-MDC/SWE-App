@@ -8,25 +8,24 @@
 import SwiftUI
 
 
-//add in account sign up 
+//add in account sign up
 
-struct ContentView: View {
+struct LoginView: View {
     @State private var username = ""
     @State private var password = ""
     @State private var wrongUsername = 0
     @State private var wrongPassword = 0
-    @State private var showingLoginScreen = false
+    @State private var showingHomeScreen = false
     @State private var width = UIScreen.main.bounds.width
     @State private var height = UIScreen.main.bounds.height
     @State private var loginFailed = false;
     @State private var errorMsg = ""
-    @State private var token = ""
     
     
     var body: some View {
         NavigationView {
             ZStack{
-
+                
                 Color.customPurple.ignoresSafeArea()
                 Circle()
                     .offset(y: 90)
@@ -35,7 +34,7 @@ struct ContentView: View {
                 Image("Logo")
                     .position(x: 180, y: 110)
                     .padding()
-               
+                
                 VStack {
                     Spacer()
                         .frame(height: 200)
@@ -73,25 +72,25 @@ struct ContentView: View {
                     
                     
                     NavigationLink(destination: SignUpView()) { Text("Create an account").padding(15)}
-//                    Spacer()
-//                        .frame(height: 0)
+                    //                    Spacer()
+                    //                        .frame(height: 0)
                     
                     NavigationLink(destination: ResetPassword()) { Text("Reset Password")}
-
                     
-                    NavigationLink(destination: HomeScreenView(), isActive: $showingLoginScreen) {
+                    
+                    NavigationLink(destination: HomeScreenView(), isActive: $showingHomeScreen) {
                     }
-
+                    
                     
                 } //vstack
-
-
+                
+                
             } //zstack
             .ignoresSafeArea(.keyboard)
-
+            
         } //nav view
         .navigationBarHidden(true)
-
+        
     }
     
     func authenticateUser(username: String, password: String) {
@@ -99,49 +98,43 @@ struct ContentView: View {
         // prepare json data
         let json: [String: Any] = ["usernameOrEmail": username,
                                    "password": password]
-        let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        // create post request
-        let url = URL(string: HttpResources.url_login)!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        // insert json data to the request
-        request.httpBody = jsonData
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")  // the request is JSON
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")        // the expected response is also JSON
+        let request = HttpResources.preparePostRequest(s_url: HttpResources.url_login, json: json)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "No data")
+                semaphore.signal()
                 return
             }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: Any] {
-                let status = responseJSON["status"] as! Int
-                let msg = responseJSON["message"] as! String
-                print(responseJSON)
-                if status == 200 {
-                    wrongPassword = 0
-                    showingLoginScreen = true
-                    token = responseJSON["token"] as! String
-                } else {
-                    wrongPassword = 2
-                    errorMsg = msg
-                }
+            
+            guard let resp = try?JSONDecoder().decode(LoginResponse.self, from: data) else {
+                print("Failed to parse json")
                 semaphore.signal()
+                return
             }
+            
+            if resp.status == 200 {
+                wrongPassword = 0
+                showingHomeScreen = true
+                GlobalStatus.token = resp.token
+            } else {
+                wrongPassword = 2
+                errorMsg = resp.message
+            }
+            
+            semaphore.signal()
         }
-
-
+        
         task.resume()
         semaphore.wait()
-        if errorMsg == "" {
-            print("Sign in successfully")
-        } else {
+        if errorMsg != "" {
             print("Sign in failed", errorMsg)
             loginFailed = true
         }
+        
+        
     }
 }
 
 #Preview {
-    ContentView()
+    LoginView()
 }

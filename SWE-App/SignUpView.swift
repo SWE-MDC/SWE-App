@@ -121,7 +121,7 @@ struct SignUpView: View {
                     .background(Color.customPurple)
                     .cornerRadius(10)
                     
-                    NavigationLink(destination: ContentView()) { Text("Back to Login")}
+                    NavigationLink(destination: LoginView()) { Text("Back to Login")}
                         .frame(width: 300, height: 50)
                     
                 } //vstack
