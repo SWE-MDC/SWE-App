@@ -127,7 +127,8 @@ struct SignUpView: View {
                 } //vstack
             } //zstack
             .ignoresSafeArea(.keyboard)
-        }
+        }        .navigationBarHidden(true)
+
     }
     
     func signup(email: String,
