@@ -24,18 +24,41 @@ struct HomeScreenView: View {
         NavigationView{
             ZStack{
                 Color.customPurple
-                NavigationLink(destination: LoginView()) {
-                    Text("Log Out")
+                
+                HStack {
+                    NavigationLink(destination: LoginView()) {
+                        Text("Log Out")
+                    }
+                    
+                    .font(.system(size: 28, design: .rounded)
+                        .weight(.bold))
+                    .foregroundColor(Color.white)
+                    .cornerRadius(10)
+                    
+                    
+                    NavigationLink(destination: AdminView()) {
+                        Text("Create Event")
+                    }
+                    //.frame(width: 120, height: 120, alignment: .trailing)
+                    .font(.system(size: 28, design: .rounded)
+                        .weight(.bold))
+                    .foregroundColor(Color.white)
+                    .cornerRadius(10)
+  
                 }
-                .frame(width: 120, height: 120, alignment: .trailing)
-                .font(.system(size: 28, design: .rounded)
-                    .weight(.bold))
-                .foregroundColor(Color.white)
-                .cornerRadius(10)
+//                .frame(width: 120, height: 120, alignment: .trailing)
                 .position(x: width/1.3, y: height/9)
+                .padding()
+                
+                
+//                .frame(width: 120, height: 120, alignment: .trailing)
+//                .font(.system(size: 28, design: .rounded)
+//                    .weight(.bold))
+//                .foregroundColor(Color.white)
+//                .cornerRadius(10)
+//                .position(x: width/1.3, y: height/9)
                 
                 VStack{
-                    
 //TODO: have this text change with the name of the current event either pulled from the database or entered manually by an admin
 
 //                    Text("No Current Events")
@@ -114,9 +137,7 @@ struct HomeScreenView: View {
     }
 
     func getEvents() {
-        
         let semaphore = DispatchSemaphore(value: 0)
-        
         let request = HttpResources.prepareGetRequest(s_url: HttpResources.url_list_events + "?limit=100", token: GlobalStatus.token)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let httpResponse = response as? HTTPURLResponse {

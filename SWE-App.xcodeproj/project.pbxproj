@@ -18,7 +18,9 @@
 		22AE06B72AD5BB8000BE67AD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06B62AD5BB8000BE67AD /* SignUpView.swift */; };
 		22EE370D2AF000B800702B94 /* DirectoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE370C2AF000B800702B94 /* DirectoryView.swift */; };
 		22EE370F2AF0127100702B94 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE370E2AF0127100702B94 /* Contact.swift */; };
+		22EE37112AF068A400702B94 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE37102AF068A300702B94 /* AdminView.swift */; };
 		EC513F002AF08D04009E838C /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC513EFF2AF08D04009E838C /* LoginResponse.swift */; };
+		EC513F042AF091E0009E838C /* GetRoleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC513F032AF091E0009E838C /* GetRoleResponse.swift */; };
 		EC7A1D682ADF0665006EF679 /* HttpResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A1D672ADF0665006EF679 /* HttpResources.swift */; };
 		ECA60DBE2AF042B8004AEB38 /* GlobalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA60DBD2AF042B8004AEB38 /* GlobalStatus.swift */; };
 		ECA60DC02AF04345004AEB38 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA60DBF2AF04345004AEB38 /* LoginView.swift */; };
@@ -60,7 +62,9 @@
 		22AE06B62AD5BB8000BE67AD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		22EE370C2AF000B800702B94 /* DirectoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryView.swift; sourceTree = "<group>"; };
 		22EE370E2AF0127100702B94 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		22EE37102AF068A300702B94 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
 		EC513EFF2AF08D04009E838C /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		EC513F032AF091E0009E838C /* GetRoleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRoleResponse.swift; sourceTree = "<group>"; };
 		EC7A1D672ADF0665006EF679 /* HttpResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResources.swift; sourceTree = "<group>"; };
 		ECA60DBD2AF042B8004AEB38 /* GlobalStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStatus.swift; sourceTree = "<group>"; };
 		ECA60DBF2AF04345004AEB38 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -129,7 +133,6 @@
 				22EE370E2AF0127100702B94 /* Contact.swift */,
 				22AE06B42AD5AEFE00BE67AD /* HomeScreenView.swift */,
 				22AE06B62AD5BB8000BE67AD /* SignUpView.swift */,
-				EC7A1D672ADF0665006EF679 /* HttpResources.swift */,
 				22EE370C2AF000B800702B94 /* DirectoryView.swift */,
 				FA63158D2AE179990056FBEC /* ResetPassword.swift */,
 				FA63158F2AE17E820056FBEC /* EventCheckIn.swift */,
@@ -143,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				22AE068E2AD45D3A00BE67AD /* Preview Assets.xcassets */,
+				22EE37102AF068A300702B94 /* AdminView.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -167,8 +171,10 @@
 		EC513EFE2AF08920009E838C /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				EC7A1D672ADF0665006EF679 /* HttpResources.swift */,
 				ECA60DC32AF0478C004AEB38 /* EventResponse.swift */,
 				EC513EFF2AF08D04009E838C /* LoginResponse.swift */,
+				EC513F032AF091E0009E838C /* GetRoleResponse.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -304,6 +310,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				22EE370D2AF000B800702B94 /* DirectoryView.swift in Sources */,
+				EC513F042AF091E0009E838C /* GetRoleResponse.swift in Sources */,
+				22EE37112AF068A400702B94 /* AdminView.swift in Sources */,
 				22EE370F2AF0127100702B94 /* Contact.swift in Sources */,
 				22AE06B72AD5BB8000BE67AD /* SignUpView.swift in Sources */,
 				FA63158E2AE179990056FBEC /* ResetPassword.swift in Sources */,

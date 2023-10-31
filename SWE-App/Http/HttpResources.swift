@@ -11,6 +11,7 @@ struct HttpResources {
     static var url_base = "http://hp.gengl.me:8081"
     static var url_login = url_base + "/api/v1/auth/signin"
     static var url_signup = url_base + "/api/v1/auth/signup"
+    static var url_get_role = url_base + "/api/v1/resource/user/role"
     static var url_list_events = url_base + "/api/v1/resource/event/get"
     
     static func prepareGetRequest(s_url: String,

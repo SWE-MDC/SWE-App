@@ -10,5 +10,4 @@ import Foundation
 struct GlobalStatus {
     static var token = ""
     static var canAddEvent = false
-    
 }

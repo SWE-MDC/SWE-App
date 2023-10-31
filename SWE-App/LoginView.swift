@@ -76,8 +76,13 @@ struct LoginView: View {
                     //                        .frame(height: 0)
                     
                     NavigationLink(destination: ResetPassword()) { Text("Reset Password")}
+                    Spacer()
+                        .frame(height: 20)
                     
-                    
+//                    NavigationLink(destination: AdminView()) {
+//                        Text("ADMIN VIEW")
+//                    }
+
                     NavigationLink(destination: HomeScreenView(), isActive: $showingHomeScreen) {
                     }
                     
@@ -126,13 +131,49 @@ struct LoginView: View {
         
         task.resume()
         semaphore.wait()
-        if errorMsg != "" {
+        if errorMsg == "" {
+            getUserRole(token: GlobalStatus.token)
+        } else {
             print("Sign in failed", errorMsg)
             loginFailed = true
         }
-        
-        
     }
+    
+    
+    func getUserRole(token: String) {
+        let semaphore = DispatchSemaphore(value: 0)
+        let request = HttpResources.prepareGetRequest(s_url: HttpResources.url_get_role, token: token)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                semaphore.signal()
+                return
+            }
+            
+            guard let resp = try?JSONDecoder().decode(GetRoleResponse.self, from: data) else {
+                errorMsg = "Failed to parse json"
+                semaphore.signal()
+                return
+            }
+            
+            if resp.status == 200 {
+                GlobalStatus.canAddEvent = (resp.role.name == "admin" || resp.role.name == "organizer")
+                print("Role \(resp.role)")
+            } else {
+                errorMsg = resp.message
+            }
+            
+            semaphore.signal()
+        }
+        
+        task.resume()
+        semaphore.wait()
+        if errorMsg != "" {
+            print("Get role failed", errorMsg)
+            loginFailed = true
+        }
+    }
+    
 }
 
 #Preview {
