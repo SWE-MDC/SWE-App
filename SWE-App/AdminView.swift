@@ -75,7 +75,7 @@ struct AdminView: View {
                 .background(Color.customPurple)
                 .cornerRadius(10)
                 
-                NavigationLink(destination: LoginView()) { Text("Back to Login")}
+                NavigationLink(destination: HomeScreenView()) { Text("Back to Home Screen")}
                     .frame(width: 300, height: 50)
                 
 //                Section(header:Text("Result")){ //you can remove this
