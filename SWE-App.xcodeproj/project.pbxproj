@@ -30,6 +30,7 @@
 		ECA60DC42AF0478C004AEB38 /* EventResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA60DC32AF0478C004AEB38 /* EventResponse.swift */; };
 		FA63158E2AE179990056FBEC /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63158D2AE179990056FBEC /* ResetPassword.swift */; };
 		FA6315902AE17E820056FBEC /* EventCheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63158F2AE17E820056FBEC /* EventCheckIn.swift */; };
+		FAE0FC9D2AF1A8FB00188E2D /* AdminNewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE0FC9C2AF1A8FB00188E2D /* AdminNewEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		ECFAC11D2AD60D43001D8391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FA63158D2AE179990056FBEC /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		FA63158F2AE17E820056FBEC /* EventCheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckIn.swift; sourceTree = "<group>"; };
+		FAE0FC9C2AF1A8FB00188E2D /* AdminNewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNewEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				ECA60DC12AF04676004AEB38 /* EventListView.swift */,
 				2260E5EF2AF156EB00825760 /* EventView.swift */,
 				2260E5F12AF15ABE00825760 /* Event.swift */,
+				FAE0FC9C2AF1A8FB00188E2D /* AdminNewEvent.swift */,
 			);
 			path = "SWE-App";
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				EC7A1D682ADF0665006EF679 /* HttpResources.swift in Sources */,
 				ECA60DC02AF04345004AEB38 /* LoginView.swift in Sources */,
 				22AE06882AD45D3800BE67AD /* SWE_AppApp.swift in Sources */,
+				FAE0FC9D2AF1A8FB00188E2D /* AdminNewEvent.swift in Sources */,
 				22AE06B52AD5AEFE00BE67AD /* HomeScreenView.swift in Sources */,
 				ECA60DC42AF0478C004AEB38 /* EventResponse.swift in Sources */,
 			);

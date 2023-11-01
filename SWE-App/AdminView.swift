@@ -21,65 +21,56 @@ struct AdminView: View {
     
     var body: some View {
         NavigationView{
+//            ZStack{
+//                Text("Admin View")
+//
+//            }
+//            .frame(width: 200, height: 50)
+//            .padding()
             VStack() {
-                Text("ADMIN VIEW")
-                    .padding()
-                
-                TextField("Event Name/Title", text: $eventName)
-                    .padding()
-                    .frame(width: 300, height: 50)
-                    .background(Color.black.opacity(0.05))
-                    .cornerRadius(10)
-                    .textInputAutocapitalization(.never)
-                
-//                TextField("Event Date", text: $eventDate)
-//                    .padding()
-//                    .frame(width: 300, height: 50)
-//                    .background(Color.black.opacity(0.05))
-//                    .cornerRadius(10)
-//                    .textInputAutocapitalization(.never)
-                
-                // https://www.youtube.com/watch?v=9UovPNh4Csw
-                Section(){
-                    DatePicker("Date & Time: ", selection: $currentTime, in: Date()...)
-                    //DatePicker("Date & Time: ", selection: $currentTime, in: Date()...).labelsHidden() use this if you don't want the label to show.
-                }
-                .padding()
-                .frame(width: 300, height: 80)
-                .background(Color.black.opacity(0.05))
-                .cornerRadius(10)
+//                VStack() {
+//                    Text("Admin View")
+//                        .frame(height: 50)
+//                        .background(Color.red)
+//
 
 
-                
-                
-                TextField("Event Location", text: $eventLocation)
-                    .padding()
-                    .frame(width: 300, height: 50)
-                    .background(Color.black.opacity(0.05))
-                    .cornerRadius(10)
-                    .textInputAutocapitalization(.never)
-                
-                TextField("Event Details", text: $eventDetails)
-                    .padding()
-                    .frame(width: 300, height: 200)
-                    .background(Color.black.opacity(0.05))
-                    .cornerRadius(10)
-                    .textInputAutocapitalization(.never)
-                
-                Button("Create New Event"){
-                    //creates a new event in database
-                    //need to update event name in homescreenview
-                }
-                .foregroundColor(.white)
-                .frame(width: 300, height: 50)
-                .background(Color.customPurple)
-                .cornerRadius(10)
-                
-                NavigationLink(destination: HomeScreenView()) { Text("Back to Home Screen")}
-                    .frame(width: 300, height: 50)
-                
-//                Section(header:Text("Result")){ //you can remove this
-//                    Text("\(currentTime)")
+                    VStack() {
+                        Text("ADMIN VIEW")
+                            .padding()
+                        
+                        NavigationLink(destination: AdminNewEvent()) { Text("Create New Event")}
+                            .foregroundColor(.white)
+                            .frame(width: 300, height: 50)
+                            .background(Color.customPurple)
+                            .cornerRadius(10)
+                        
+                        NavigationLink(destination: AdminNewEvent()) { Text("View Reports. NOTE: still needs link")}
+                            .foregroundColor(.white)
+                            .frame(width: 300, height: 50)
+                            .background(Color.customPurple)
+                            .cornerRadius(10)
+                        
+                        
+//                        NavigationLink(destination: DirectoryView()) { Text("View Directory")}
+//                            .foregroundColor(.white)
+//                            .frame(width: 300, height: 50)
+//                            .background(Color.customPurple)
+//                            .cornerRadius(10)
+//                        
+//                        NavigationLink(destination: EventView()) { Text("View Events")}
+//                            .foregroundColor(.white)
+//                            .frame(width: 300, height: 50)
+//                            .background(Color.customPurple)
+//                            .cornerRadius(10)
+                        
+                        NavigationLink(destination: HomeScreenView()) { Text("Back to Home Screen")}
+                            .frame(width: 300, height: 50)
+                        
+                        //                Section(header:Text("Result")){ //you can remove this
+                        //                    Text("\(currentTime)")
+                        //                }
+                    }
 //                }
             }
         }.navigationBarHidden(true)
