@@ -23,7 +23,7 @@ struct AdminNewEvent: View {
     var body: some View {
         NavigationView{
             VStack() {
-                Text("ADMIN VIEW")
+                Text("New Event")
                     .padding()
                 
                 TextField("Event Name/Title", text: $eventName)
