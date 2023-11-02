@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailEventView: View {
+struct DetailDirectoryView: View {
     let contact: Contact
     
     var body: some View {
@@ -36,5 +36,5 @@ struct DetailEventView: View {
 }
 
 #Preview {
-    DetailEventView(contact: contacts[0])
+    DetailDirectoryView(contact: contacts[0])
 }

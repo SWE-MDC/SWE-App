@@ -14,7 +14,7 @@ struct DirectoryView: View {
     var body: some View {
         NavigationView {
             List(contacts) { contact in
-                NavigationLink(destination: DetailEventView(contact: contact)){
+                NavigationLink(destination: DetailDirectoryView(contact: contact)){
                     ContactRow(contact: contact)
                 }
             } .navigationBarTitle("Directory")

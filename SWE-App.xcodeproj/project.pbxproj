@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2260E5F02AF156EB00825760 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260E5EF2AF156EB00825760 /* EventView.swift */; };
 		2260E5F22AF15ABE00825760 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260E5F12AF15ABE00825760 /* Event.swift */; };
-		227EB8B92AF3E11E00A2BF59 /* DetailEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227EB8B82AF3E11E00A2BF59 /* DetailEventView.swift */; };
+		227EB8B92AF3E11E00A2BF59 /* DetailDirectoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227EB8B82AF3E11E00A2BF59 /* DetailDirectoryView.swift */; };
 		22AE06882AD45D3800BE67AD /* SWE_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06872AD45D3800BE67AD /* SWE_AppApp.swift */; };
 		22AE068C2AD45D3A00BE67AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AE068B2AD45D3A00BE67AD /* Assets.xcassets */; };
 		22AE068F2AD45D3A00BE67AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AE068E2AD45D3A00BE67AD /* Preview Assets.xcassets */; };
@@ -54,7 +54,7 @@
 /* Begin PBXFileReference section */
 		2260E5EF2AF156EB00825760 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		2260E5F12AF15ABE00825760 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		227EB8B82AF3E11E00A2BF59 /* DetailEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEventView.swift; sourceTree = "<group>"; };
+		227EB8B82AF3E11E00A2BF59 /* DetailDirectoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDirectoryView.swift; sourceTree = "<group>"; };
 		22AE06842AD45D3800BE67AD /* SWE-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWE-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AE06872AD45D3800BE67AD /* SWE_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWE_AppApp.swift; sourceTree = "<group>"; };
 		22AE068B2AD45D3A00BE67AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 				2260E5EF2AF156EB00825760 /* EventView.swift */,
 				2260E5F12AF15ABE00825760 /* Event.swift */,
 				FAE0FC9C2AF1A8FB00188E2D /* AdminNewEvent.swift */,
-				227EB8B82AF3E11E00A2BF59 /* DetailEventView.swift */,
+				227EB8B82AF3E11E00A2BF59 /* DetailDirectoryView.swift */,
 			);
 			path = "SWE-App";
 			sourceTree = "<group>";
@@ -329,7 +329,7 @@
 				22AE06B72AD5BB8000BE67AD /* SignUpView.swift in Sources */,
 				FA63158E2AE179990056FBEC /* ResetPassword.swift in Sources */,
 				22AE06B22AD4710900BE67AD /* Colors.swift in Sources */,
-				227EB8B92AF3E11E00A2BF59 /* DetailEventView.swift in Sources */,
+				227EB8B92AF3E11E00A2BF59 /* DetailDirectoryView.swift in Sources */,
 				ECA60DBE2AF042B8004AEB38 /* GlobalStatus.swift in Sources */,
 				EC513F002AF08D04009E838C /* LoginResponse.swift in Sources */,
 				2260E5F22AF15ABE00825760 /* Event.swift in Sources */,
