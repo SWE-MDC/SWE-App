@@ -136,29 +136,30 @@ struct HomeScreenView: View {
                     HStack {
                         Spacer()
                         sideMenu()
-                        //                                .offset(x: 0)
-                        //                                .offset(x: UIScreen.main.bounds.width)
-                            .offset(x: showMenu ? 0 : UIScreen.main.bounds.width)
-                            .animation(.easeInOut(duration: 0.3), value: showMenu)
+                        //hides the side menu with showMenu is false
+                        .offset(x: showMenu ? 0 : UIScreen.main.bounds.width)
+                        .animation(.easeInOut(duration: 0.3), value: showMenu)
                     }
                 }
+                //when side menu is open, it darkens the rest of the screen
                 .background(Color.black.opacity(showMenu ? 0.5 : 0))
             } .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 .navigationTitle("Menu:")
-                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarTitleDisplayMode(.inline) //lines title up with icon
 
 
                 .toolbar{
                     
                     Button{
+                        //allows user to toggle the menu side bar
                         self.showMenu.toggle()
                     } label: {
-                        
+                        //if side menu is showing, display an "x" icon
                         if showMenu {
                             Image(systemName: "xmark")
                                 .font(.title)
                                 .foregroundColor(.red)
-                        } else {
+                        } else { //side menu not showing, show 3 bars
                             Image(systemName: "text.justify")
                                 .font(.title)
                                 .foregroundColor(.red)

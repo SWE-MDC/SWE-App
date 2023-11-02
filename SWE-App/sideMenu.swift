@@ -18,9 +18,8 @@ struct sideMenu: View {
                 .font(.title)
                 .padding([.top], 100) //move everything down from the top
                 .foregroundColor(.black)
-//                .position(x: 50, y: 100)
-//                .frame(width: 100, height: 30)
-            Divider()
+
+            Divider() //horizontal bar
                 .frame(width: 180, height: 4)
                 .background(Color.black)
                 .padding(.horizontal, 16)
@@ -81,17 +80,9 @@ struct sideMenu: View {
             .background(Color.customPurple)
             .cornerRadius(10)
             .foregroundColor(.black)
-//
-//
+
             Spacer()
-//            NavigationLink(destination: ResetPassword()) { Text("Reset Password")}
-//            .font(.system(size: 30, design: .rounded)
-//                .weight(.bold))
-//            .foregroundColor(Color.customPurple)
-//            .frame(width: 200, height: 50)
-//            .background(Color.white)
-//            .cornerRadius(10)
-//            
+
 //            Link(destination: URL(string: "https://apple.com")!){
 //                Text("Apple")
 //            }
