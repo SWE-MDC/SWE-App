@@ -12,6 +12,7 @@ struct EventView: View {
         List(events){ event in
             ExtractedView(events:event)
         }
+      
     }
         
 }
@@ -25,6 +26,7 @@ struct ExtractedView: View {
 
     var body: some View {
         HStack{
+            
             VStack(alignment: .leading){
                 
 //TODO: change to use Event struct from EventResponse and probably delete Event file
@@ -33,8 +35,15 @@ struct ExtractedView: View {
                 Text(events.date)
                 Text(events.time)
                 Text(events.location)
+                
+                    
+                
 
             }
+        
         }
+        
+       
+
     }
 }
