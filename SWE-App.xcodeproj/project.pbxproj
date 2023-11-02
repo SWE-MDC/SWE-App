@@ -30,6 +30,7 @@
 		ECA60DC02AF04345004AEB38 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA60DBF2AF04345004AEB38 /* LoginView.swift */; };
 		ECA60DC22AF04676004AEB38 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA60DC12AF04676004AEB38 /* EventListView.swift */; };
 		ECA60DC42AF0478C004AEB38 /* EventResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA60DC32AF0478C004AEB38 /* EventResponse.swift */; };
+		FA20601F2AF418F40063C29E /* UserFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20601E2AF418F40063C29E /* UserFeedback.swift */; };
 		FA63158E2AE179990056FBEC /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63158D2AE179990056FBEC /* ResetPassword.swift */; };
 		FA6315902AE17E820056FBEC /* EventCheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63158F2AE17E820056FBEC /* EventCheckIn.swift */; };
 		FAE0FC9D2AF1A8FB00188E2D /* AdminNewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE0FC9C2AF1A8FB00188E2D /* AdminNewEvent.swift */; };
@@ -80,6 +81,7 @@
 		ECA60DC12AF04676004AEB38 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		ECA60DC32AF0478C004AEB38 /* EventResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventResponse.swift; sourceTree = "<group>"; };
 		ECFAC11D2AD60D43001D8391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FA20601E2AF418F40063C29E /* UserFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedback.swift; sourceTree = "<group>"; };
 		FA63158D2AE179990056FBEC /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		FA63158F2AE17E820056FBEC /* EventCheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckIn.swift; sourceTree = "<group>"; };
 		FAE0FC9C2AF1A8FB00188E2D /* AdminNewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNewEvent.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				FAE0FC9C2AF1A8FB00188E2D /* AdminNewEvent.swift */,
 				227EB8B82AF3E11E00A2BF59 /* DetailDirectoryView.swift */,
 				227EB8BA2AF3F31A00A2BF59 /* DetailEventView.swift */,
+				FA20601E2AF418F40063C29E /* UserFeedback.swift */,
 			);
 			path = "SWE-App";
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				FAE0FC9D2AF1A8FB00188E2D /* AdminNewEvent.swift in Sources */,
 				22AE06B52AD5AEFE00BE67AD /* HomeScreenView.swift in Sources */,
 				ECA60DC42AF0478C004AEB38 /* EventResponse.swift in Sources */,
+				FA20601F2AF418F40063C29E /* UserFeedback.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

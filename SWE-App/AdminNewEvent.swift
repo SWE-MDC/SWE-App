@@ -60,7 +60,7 @@ struct AdminNewEvent: View {
                     .cornerRadius(10)
                     .textInputAutocapitalization(.never)
                 
-                TextField("Event Details", text: $eventDetails)
+                TextField("Event Details", text: $eventDetails, axis: .vertical)
                     .padding()
                     .frame(width: 300, height: 200)
                     .background(Color.black.opacity(0.05))
