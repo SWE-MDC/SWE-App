@@ -12,9 +12,13 @@ import Foundation
 
 struct DirectoryView: View {
     var body: some View {
-        List(contacts) { contact in 
-            ContactRow(contact: contact)
-            }
+        NavigationView {
+            List(contacts) { contact in
+                NavigationLink(destination: DetailEventView(contact: contact)){
+                    ContactRow(contact: contact)
+                }
+            } .navigationBarTitle("Directory")
+        }
         
     }
 }
