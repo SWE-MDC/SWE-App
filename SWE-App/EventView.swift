@@ -9,8 +9,12 @@ import SwiftUI
 
 struct EventView: View {
     var body: some View {
-        List(events){ event in
-            ExtractedView(events:event)
+        NavigationView {
+            List(events){ event in
+                NavigationLink(destination: DetailEventView(event: event)){
+                    ExtractedView(events:event)
+                }
+            }
         }
       
     }
@@ -33,11 +37,7 @@ struct ExtractedView: View {
                 Text(events.name)
                     .font(.system(size: 21, weight: .medium))
                 Text(events.date)
-                Text(events.time)
-                Text(events.location)
-                
-                    
-                
+  
 
             }
         
