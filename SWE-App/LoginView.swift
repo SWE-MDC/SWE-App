@@ -79,6 +79,10 @@ struct LoginView: View {
                     Spacer()
                         .frame(height: 20)
                     
+                    //remove this
+                    NavigationLink(destination: HomeScreenView()) { Text("Back to Home Screen")}
+                        .frame(width: 300, height: 50)
+                    
 //                    NavigationLink(destination: AdminView()) {
 //                        Text("ADMIN VIEW")
 //                    }

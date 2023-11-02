@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 //NOT for admin use
 //view future events? link to google calendar
@@ -19,52 +20,45 @@ struct HomeScreenView: View {
     @State var menuOpened = false;
     @State var events: [Event] = []
     @State var eventsReady: Bool = false
+    @State private var showMenu: Bool = false
 
     var body: some View {
         NavigationView{
             ZStack{
                 Color.customPurple
                 
-                HStack {
-//TODO: hide this button for non admin users
-                    NavigationLink(destination: AdminView()) {
-                        Text("Create Event")
-                    }
-                    .frame(width: 120, height: 120, alignment: .leading)
-                    .font(.system(size: 28, design: .rounded)
-                        .weight(.bold))
-                    .foregroundColor(Color.white)
-                    .cornerRadius(10)
-                    .position(x: -50, y: height/2)
-                    
-                    
-                    NavigationLink(destination: LoginView()) {
-                        Text("Log Out")
-                    }
-                    
-                    .font(.system(size: 28, design: .rounded)
-                        .weight(.bold))
-                    .foregroundColor(Color.white)
-                    .cornerRadius(10)
-                    .position(x: 10, y: height/2)
-                    
-                    
-                  
-  
-                }
-//                .frame(width: 120, height: 120, alignment: .trailing)
-                .position(x: width/1.3, y: height/9)
-                .padding()
                 
-                
-//                .frame(width: 120, height: 120, alignment: .trailing)
-//                .font(.system(size: 28, design: .rounded)
-//                    .weight(.bold))
-//                .foregroundColor(Color.white)
-//                .cornerRadius(10)
-//                .position(x: width/1.3, y: height/9)
+//                HStack {
+////TODO: hide this button for non admin users
+//                    NavigationLink(destination: AdminView()) {
+//                        Text("Create Event")
+//                    }
+//                    .frame(width: 120, height: 120, alignment: .leading)
+//                    .font(.system(size: 28, design: .rounded)
+//                        .weight(.bold))
+//                    .foregroundColor(Color.white)
+//                    .cornerRadius(10)
+//                    .position(x: -50, y: height/2)
+//                    
+//                    
+//                    NavigationLink(destination: LoginView()) {
+//                        Text("Log Out")
+//                    }
+//                    
+//                    .font(.system(size: 28, design: .rounded)
+//                        .weight(.bold))
+//                    .foregroundColor(Color.white)
+//                    .cornerRadius(10)
+//                    .position(x: 10, y: height/2)
+//                    
+//                    
+//                  
+//  
+//                }
+////                .frame(width: 120, height: 120, alignment: .trailing)
                 
                 VStack{
+                    
 //TODO: have this text change with the name of the current event either pulled from the database or entered manually by an admin
 
 //                    Text("No Current Events")
@@ -99,47 +93,80 @@ struct HomeScreenView: View {
                     .cornerRadius(10)
                     .position(x: width/2, y: height/7)
                     
-                    HStack{
-                        NavigationLink(destination: EventView()) {
-                            Text("Future Events")
-                        }
-                        .font(.system(size: 20, design: .rounded)
-                            .weight(.bold))
-                        .foregroundColor(Color.customPurple)
-                        .frame(width: 120, height: 120)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        
-                        NavigationLink(destination: DirectoryView()) {
-                            //take to directory
-                            Text("Directory")
-                        }
-                        .font(.system(size: 20, design: .rounded)
-                            .weight(.bold))
-                        .foregroundColor(Color.customPurple)
-                        .frame(width: 120, height: 120)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(0.4)
-                        
-                        
-                        Button("Profile") {
-                            //take to settings
-                        }
-                        .font(.system(size: 20, design: .rounded)
-                            .weight(.bold))
-                        .foregroundColor(Color.customPurple)
-                        .frame(width: 120, height: 120)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        
-                        
-                    } .padding()
+//                    HStack{
+//                        NavigationLink(destination: EventView()) {
+//                            Text("Future Events")
+//                        }
+//                        .font(.system(size: 20, design: .rounded)
+//                            .weight(.bold))
+//                        .foregroundColor(Color.customPurple)
+//                        .frame(width: 120, height: 120)
+//                        .background(Color.white)
+//                        .cornerRadius(10)
+//                        
+//                        NavigationLink(destination: DirectoryView()) {
+//                            //take to directory
+//                            Text("Directory")
+//                        }
+//                        .font(.system(size: 20, design: .rounded)
+//                            .weight(.bold))
+//                        .foregroundColor(Color.customPurple)
+//                        .frame(width: 120, height: 120)
+//                        .background(Color.white)
+//                        .cornerRadius(10)
+//                        .padding(0.4)
+//                        
+//                        
+//                        Button("Profile") {
+//                            //take to settings
+//                        }
+//                        .font(.system(size: 20, design: .rounded)
+//                            .weight(.bold))
+//                        .foregroundColor(Color.customPurple)
+//                        .frame(width: 120, height: 120)
+//                        .background(Color.white)
+//                        .cornerRadius(10)
+//                        
+//                        
+//                    } .padding()
                     
                 }
-                
+                //used to display side bar menu
+                GeometryReader { _ in
+                    HStack {
+                        Spacer()
+                        sideMenu()
+                        //                                .offset(x: 0)
+                        //                                .offset(x: UIScreen.main.bounds.width)
+                            .offset(x: showMenu ? 0 : UIScreen.main.bounds.width)
+                            .animation(.easeInOut(duration: 0.3), value: showMenu)
+                    }
+                }
+                .background(Color.black.opacity(showMenu ? 0.5 : 0))
             } .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                .navigationTitle("Menu:")
+                .navigationBarTitleDisplayMode(.inline)
+
+
+                .toolbar{
+                    
+                    Button{
+                        self.showMenu.toggle()
+                    } label: {
+                        
+                        if showMenu {
+                            Image(systemName: "xmark")
+                                .font(.title)
+                                .foregroundColor(.red)
+                        } else {
+                            Image(systemName: "text.justify")
+                                .font(.title)
+                                .foregroundColor(.red)
+                        }
+                    }
+                }
         } .navigationBarHidden(true)
+            
     }
 
     func getEvents() {
