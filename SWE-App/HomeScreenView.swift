@@ -19,6 +19,7 @@ struct HomeScreenView: View {
     @State var menuOpened = false;
     @State var events: [Event] = []
     @State var eventsReady: Bool = false
+    @State var canAddEvent: Bool = false
 
     var body: some View {
         NavigationView{
@@ -36,6 +37,8 @@ struct HomeScreenView: View {
                     .foregroundColor(Color.white)
                     .cornerRadius(10)
                     .position(x: -50, y: height/2)
+                    .disabled(!GlobalStatus.canAddEvent)
+                    
                     
                     
                     NavigationLink(destination: LoginView()) {
@@ -47,45 +50,15 @@ struct HomeScreenView: View {
                     .foregroundColor(Color.white)
                     .cornerRadius(10)
                     .position(x: 10, y: height/2)
-                    
-                    
-                  
-  
                 }
 //                .frame(width: 120, height: 120, alignment: .trailing)
                 .position(x: width/1.3, y: height/9)
                 .padding()
                 
-                
-//                .frame(width: 120, height: 120, alignment: .trailing)
-//                .font(.system(size: 28, design: .rounded)
-//                    .weight(.bold))
-//                .foregroundColor(Color.white)
-//                .cornerRadius(10)
-//                .position(x: width/1.3, y: height/9)
-                
+
                 VStack{
 //TODO: have this text change with the name of the current event either pulled from the database or entered manually by an admin
 
-//                    Text("No Current Events")
-//                        .multilineTextAlignment(.center)
-//                        .font(.system(size: 50, design: .rounded)
-//                            .weight(.heavy))
-//                        .foregroundColor(Color.white)
-//                        .position(x: width/2, y: height/3)
-                    Button("Show Events")
-                    {
-                        eventsReady = false
-                        getEvents()
-                    }.foregroundColor(.customPurple)
-                        .frame(width: 250, height: 50)
-                        .font(.system(size: 20, design: .rounded))
-                        .background(Color.white)
-                        .cornerRadius(10).position(x: width/2, y: height/3)
-                    
-                    
-                    NavigationLink(destination: EventListView(events: $events), isActive: $eventsReady) {
-                    }
                     
                     NavigationLink(destination: EventCheckIn()) {
                         //take to event screen
@@ -97,11 +70,14 @@ struct HomeScreenView: View {
                     .frame(width: 250, height: 250)
                     .background(Color.white)
                     .cornerRadius(10)
-                    .position(x: width/2, y: height/7)
+                    .position(x: width/2, y: height/2.5)
                     
                     HStack{
-                        NavigationLink(destination: EventView()) {
-                            Text("Future Events")
+                        
+                        Button("Show Events")
+                        {
+                            eventsReady = false
+                            getEvents()
                         }
                         .font(.system(size: 20, design: .rounded)
                             .weight(.bold))
@@ -109,7 +85,13 @@ struct HomeScreenView: View {
                         .frame(width: 120, height: 120)
                         .background(Color.white)
                         .cornerRadius(10)
+                        .padding(0.4)
                         
+                        
+                        
+                        NavigationLink(destination: EventListView(events: $events), isActive: $eventsReady) {
+                        }
+       
                         NavigationLink(destination: DirectoryView()) {
                             //take to directory
                             Text("Directory")
@@ -155,6 +137,7 @@ struct HomeScreenView: View {
                 semaphore.signal()
                 return
             }
+            
             guard let eventResp = try?JSONDecoder().decode(EventResponse.self, from: data) else {
                 print("Failed to parse json")
                 semaphore.signal()
@@ -163,6 +146,7 @@ struct HomeScreenView: View {
             
             if eventResp.status == 200 {
                 events = eventResp.events
+                
             }
             semaphore.signal()
             

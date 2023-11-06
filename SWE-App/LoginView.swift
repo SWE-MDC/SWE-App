@@ -11,8 +11,8 @@ import SwiftUI
 //add in account sign up
 
 struct LoginView: View {
-    @State private var username = ""
-    @State private var password = ""
+    @State private var username = "geng.161@buckeyemail.osu.edu"
+    @State private var password = "random_blabla1234"
     @State private var wrongUsername = 0
     @State private var wrongPassword = 0
     @State private var showingHomeScreen = false
@@ -50,6 +50,7 @@ struct LoginView: View {
                         .cornerRadius(10)
                         .textInputAutocapitalization(.never)
                         .border(.red, width: CGFloat(wrongUsername))
+                        
                     
                     SecureField("Password", text: $password)
                         .padding()
@@ -62,7 +63,8 @@ struct LoginView: View {
                         loginFailed = false
                         errorMsg = ""
                         authenticateUser(username: username, password: password)
-                    }.alert(errorMsg, isPresented: $loginFailed) {
+                    }.alert(errorMsg, isPresented: $loginFailed)
+                    {
                         Button("OK", role: .cancel) { }
                     }
                     .foregroundColor(.white)
@@ -103,77 +105,42 @@ struct LoginView: View {
         // prepare json data
         let json: [String: Any] = ["usernameOrEmail": username,
                                    "password": password]
-        let request = HttpResources.preparePostRequest(s_url: HttpResources.url_login, json: json)
+        let request = HttpResources.preparePostRequest(s_url: HttpResources.url_login, json: json, token: nil)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
-                print(error?.localizedDescription ?? "No data")
+                errorMsg = error?.localizedDescription ?? "No data"
                 semaphore.signal()
                 return
             }
             
-            guard let resp = try?JSONDecoder().decode(LoginResponse.self, from: data) else {
-                print("Failed to parse json")
-                semaphore.signal()
-                return
+            do {
+                 let resp = try JSONDecoder().decode(LoginResponse.self, from: data)
+                
+                if resp.status == 200 {
+                    wrongPassword = 0
+                    showingHomeScreen = true
+                    GlobalStatus.token = resp.token!
+                    GlobalStatus.canAddEvent = (resp.role!.name == "admin" || resp.role!.name == "organizer")
+                    print(GlobalStatus.canAddEvent)
+                } else {
+                    wrongPassword = 2
+                    errorMsg = resp.message
+                }
+            } catch let error {
+                errorMsg = "Parse error"
+                print(error)
             }
-            
-            if resp.status == 200 {
-                wrongPassword = 0
-                showingHomeScreen = true
-                GlobalStatus.token = resp.token
-            } else {
-                wrongPassword = 2
-                errorMsg = resp.message
-            }
-            
-            semaphore.signal()
-        }
-        
-        task.resume()
-        semaphore.wait()
-        if errorMsg == "" {
-            getUserRole(token: GlobalStatus.token)
-        } else {
-            print("Sign in failed", errorMsg)
-            loginFailed = true
-        }
-    }
-    
-    
-    func getUserRole(token: String) {
-        let semaphore = DispatchSemaphore(value: 0)
-        let request = HttpResources.prepareGetRequest(s_url: HttpResources.url_get_role, token: token)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                print(error?.localizedDescription ?? "No data")
-                semaphore.signal()
-                return
-            }
-            
-            guard let resp = try?JSONDecoder().decode(GetRoleResponse.self, from: data) else {
-                errorMsg = "Failed to parse json"
-                semaphore.signal()
-                return
-            }
-            
-            if resp.status == 200 {
-                GlobalStatus.canAddEvent = (resp.role.name == "admin" || resp.role.name == "organizer")
-                print("Role \(resp.role)")
-            } else {
-                errorMsg = resp.message
-            }
-            
+
             semaphore.signal()
         }
         
         task.resume()
         semaphore.wait()
         if errorMsg != "" {
-            print("Get role failed", errorMsg)
+            print("Sign in failed", errorMsg)
             loginFailed = true
         }
     }
-    
 }
 
 #Preview {

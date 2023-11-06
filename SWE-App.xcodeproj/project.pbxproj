@@ -23,6 +23,7 @@
 		22EE370D2AF000B800702B94 /* DirectoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE370C2AF000B800702B94 /* DirectoryView.swift */; };
 		22EE370F2AF0127100702B94 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE370E2AF0127100702B94 /* Contact.swift */; };
 		22EE37112AF068A400702B94 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE37102AF068A300702B94 /* AdminView.swift */; };
+		EC17A80C2AF884A7002C279A /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC17A80B2AF884A6002C279A /* GenericResponse.swift */; };
 		EC513F002AF08D04009E838C /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC513EFF2AF08D04009E838C /* LoginResponse.swift */; };
 		EC513F042AF091E0009E838C /* GetRoleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC513F032AF091E0009E838C /* GetRoleResponse.swift */; };
 		EC7A1D682ADF0665006EF679 /* HttpResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A1D672ADF0665006EF679 /* HttpResources.swift */; };
@@ -73,6 +74,7 @@
 		22EE370C2AF000B800702B94 /* DirectoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryView.swift; sourceTree = "<group>"; };
 		22EE370E2AF0127100702B94 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		22EE37102AF068A300702B94 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
+		EC17A80B2AF884A6002C279A /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		EC513EFF2AF08D04009E838C /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		EC513F032AF091E0009E838C /* GetRoleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRoleResponse.swift; sourceTree = "<group>"; };
 		EC7A1D672ADF0665006EF679 /* HttpResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResources.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				ECA60DC32AF0478C004AEB38 /* EventResponse.swift */,
 				EC513EFF2AF08D04009E838C /* LoginResponse.swift */,
 				EC513F032AF091E0009E838C /* GetRoleResponse.swift */,
+				EC17A80B2AF884A6002C279A /* GenericResponse.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				22EE37112AF068A400702B94 /* AdminView.swift in Sources */,
 				2260E5F02AF156EB00825760 /* EventView.swift in Sources */,
 				22EE370F2AF0127100702B94 /* Contact.swift in Sources */,
+				EC17A80C2AF884A7002C279A /* GenericResponse.swift in Sources */,
 				22AE06B72AD5BB8000BE67AD /* SignUpView.swift in Sources */,
 				227EB8BB2AF3F31A00A2BF59 /* DetailEventView.swift in Sources */,
 				FA63158E2AE179990056FBEC /* ResetPassword.swift in Sources */,

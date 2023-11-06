@@ -44,15 +44,38 @@ struct EventResponse: Decodable {
     let events: [Event]
 }
 
-struct Event: Identifiable, Decodable {
-    let id: Int
+public class Event: Identifiable, Decodable {
+    public let id: Int
     let title: String
     let details: String
     let date: String
     let location: String
     let organizer: String
     let eventCode: String
-    let group: String
+    let group: String?
+    
+    public enum CodingKeys : String, CodingKey {
+        case id
+        case title
+        case details
+        case date
+        case location
+        case organizer
+        case eventCode
+        case group
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(Int.self, forKey: .id)
+        self.title = try container.decode(String.self, forKey: .title)
+        self.details = try container.decode(String.self, forKey: .details)
+        self.date = try container.decode(String.self, forKey: .date)
+        self.location = try container.decode(String.self, forKey: .location)
+        self.organizer = try container.decode(String.self, forKey: .organizer)
+        self.eventCode = try container.decode(String.self, forKey: .eventCode)
+        self.group = try container.decodeIfPresent(String.self, forKey: .group)
+    }
 }
 
 //var events = [
