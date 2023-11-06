@@ -23,10 +23,10 @@
 		22EE370D2AF000B800702B94 /* DirectoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE370C2AF000B800702B94 /* DirectoryView.swift */; };
 		22EE370F2AF0127100702B94 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE370E2AF0127100702B94 /* Contact.swift */; };
 		22EE37112AF068A400702B94 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE37102AF068A300702B94 /* AdminView.swift */; };
-		EC17A80C2AF884A7002C279A /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC17A80B2AF884A6002C279A /* GenericResponse.swift */; };
 		5F354CB12AF86F23006F19DD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F354CB02AF86F23006F19DD /* ProfileView.swift */; };
 		5F354CB32AF8764D006F19DD /* ProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F354CB22AF8764D006F19DD /* ProfileInfo.swift */; };
 		5F354CB52AF87E13006F19DD /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F354CB42AF87E13006F19DD /* ProfileEditView.swift */; };
+		EC17A80C2AF884A7002C279A /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC17A80B2AF884A6002C279A /* GenericResponse.swift */; };
 		EC513F002AF08D04009E838C /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC513EFF2AF08D04009E838C /* LoginResponse.swift */; };
 		EC513F042AF091E0009E838C /* GetRoleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC513F032AF091E0009E838C /* GetRoleResponse.swift */; };
 		EC7A1D682ADF0665006EF679 /* HttpResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A1D672ADF0665006EF679 /* HttpResources.swift */; };
@@ -37,6 +37,8 @@
 		FA20601F2AF418F40063C29E /* UserFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20601E2AF418F40063C29E /* UserFeedback.swift */; };
 		FA63158E2AE179990056FBEC /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63158D2AE179990056FBEC /* ResetPassword.swift */; };
 		FA6315902AE17E820056FBEC /* EventCheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63158F2AE17E820056FBEC /* EventCheckIn.swift */; };
+		FABB73212AF990E800ED5C4B /* sideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB73202AF990E800ED5C4B /* sideMenu.swift */; };
+		FABB73232AF9914200ED5C4B /* HomeScreenViewAlex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB73222AF9914200ED5C4B /* HomeScreenViewAlex.swift */; };
 		FAE0FC9D2AF1A8FB00188E2D /* AdminNewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE0FC9C2AF1A8FB00188E2D /* AdminNewEvent.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,10 +79,10 @@
 		22EE370C2AF000B800702B94 /* DirectoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryView.swift; sourceTree = "<group>"; };
 		22EE370E2AF0127100702B94 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		22EE37102AF068A300702B94 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
-		EC17A80B2AF884A6002C279A /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		5F354CB02AF86F23006F19DD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5F354CB22AF8764D006F19DD /* ProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfo.swift; sourceTree = "<group>"; };
 		5F354CB42AF87E13006F19DD /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		EC17A80B2AF884A6002C279A /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		EC513EFF2AF08D04009E838C /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		EC513F032AF091E0009E838C /* GetRoleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRoleResponse.swift; sourceTree = "<group>"; };
 		EC7A1D672ADF0665006EF679 /* HttpResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResources.swift; sourceTree = "<group>"; };
@@ -92,6 +94,8 @@
 		FA20601E2AF418F40063C29E /* UserFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedback.swift; sourceTree = "<group>"; };
 		FA63158D2AE179990056FBEC /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		FA63158F2AE17E820056FBEC /* EventCheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckIn.swift; sourceTree = "<group>"; };
+		FABB73202AF990E800ED5C4B /* sideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sideMenu.swift; sourceTree = "<group>"; };
+		FABB73222AF9914200ED5C4B /* HomeScreenViewAlex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewAlex.swift; sourceTree = "<group>"; };
 		FAE0FC9C2AF1A8FB00188E2D /* AdminNewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNewEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,11 +156,13 @@
 				22AE06B12AD4710900BE67AD /* Colors.swift */,
 				22EE370E2AF0127100702B94 /* Contact.swift */,
 				22AE06B42AD5AEFE00BE67AD /* HomeScreenView.swift */,
+				FABB73222AF9914200ED5C4B /* HomeScreenViewAlex.swift */,
 				22EE37102AF068A300702B94 /* AdminView.swift */,
 				22AE06B62AD5BB8000BE67AD /* SignUpView.swift */,
 				22EE370C2AF000B800702B94 /* DirectoryView.swift */,
 				FA63158D2AE179990056FBEC /* ResetPassword.swift */,
 				FA63158F2AE17E820056FBEC /* EventCheckIn.swift */,
+				FABB73202AF990E800ED5C4B /* sideMenu.swift */,
 				ECA60DBD2AF042B8004AEB38 /* GlobalStatus.swift */,
 				ECA60DC12AF04676004AEB38 /* EventListView.swift */,
 				2260E5EF2AF156EB00825760 /* EventView.swift */,
@@ -350,6 +356,7 @@
 				FA63158E2AE179990056FBEC /* ResetPassword.swift in Sources */,
 				22AE06B22AD4710900BE67AD /* Colors.swift in Sources */,
 				5F354CB32AF8764D006F19DD /* ProfileInfo.swift in Sources */,
+				FABB73212AF990E800ED5C4B /* sideMenu.swift in Sources */,
 				227EB8B92AF3E11E00A2BF59 /* DetailDirectoryView.swift in Sources */,
 				ECA60DBE2AF042B8004AEB38 /* GlobalStatus.swift in Sources */,
 				EC513F002AF08D04009E838C /* LoginResponse.swift in Sources */,
@@ -357,6 +364,7 @@
 				FA6315902AE17E820056FBEC /* EventCheckIn.swift in Sources */,
 				ECA60DC22AF04676004AEB38 /* EventListView.swift in Sources */,
 				EC7A1D682ADF0665006EF679 /* HttpResources.swift in Sources */,
+				FABB73232AF9914200ED5C4B /* HomeScreenViewAlex.swift in Sources */,
 				ECA60DC02AF04345004AEB38 /* LoginView.swift in Sources */,
 				5F354CB12AF86F23006F19DD /* ProfileView.swift in Sources */,
 				22AE06882AD45D3800BE67AD /* SWE_AppApp.swift in Sources */,
