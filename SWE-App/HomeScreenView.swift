@@ -105,8 +105,9 @@ struct HomeScreenView: View {
                         .padding(0.4)
                         
                         
-                        Button("Profile") {
-                            //take to settings
+                        NavigationLink(destination: ProfileView(profile: allProfiles[0])) {
+                            Text("Profile")
+                            
                         }
                         .font(.system(size: 20, design: .rounded)
                             .weight(.bold))
