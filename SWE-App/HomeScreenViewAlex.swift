@@ -17,10 +17,10 @@ struct HomeScreenViewAlex: View {
     
     @State private var width = UIScreen.main.bounds.width
     @State private var height = UIScreen.main.bounds.height
-    @State var menuOpened = false;
     @State var events: [Event] = []
     @State var eventsReady: Bool = false
     @State private var showMenu: Bool = false
+    @State var menuOpened = false;
     @State var canAddEvent: Bool = false
 
     var body: some View {
