@@ -91,7 +91,8 @@ struct sideMenu: View {
             Spacer()
         }
         .padding(16)
-        .background(Color(red: 213/255, green: 188/255, blue: 85/255))
+        .background(Color.customYellow)
+//        .background(Color(red: 213/255, green: 188/255, blue: 85/255))
         .edgesIgnoringSafeArea(.bottom)
     }
 }

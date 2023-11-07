@@ -118,11 +118,11 @@ struct AdminView: View {
                 if showMenu {
                     Image(systemName: "xmark")
                         .font(.title)
-                        .foregroundColor(.red)
+                        .foregroundColor(.black)
                 } else { //side menu not showing, show 3 bars
                     Image(systemName: "text.justify")
                         .font(.title)
-                        .foregroundColor(.red)
+                        .foregroundColor(Color.customYellow)
                 }
             }
         }
