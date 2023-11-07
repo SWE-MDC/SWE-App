@@ -18,7 +18,7 @@
 		22AE06A32AD45D3B00BE67AD /* SWE_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06A22AD45D3B00BE67AD /* SWE_AppUITests.swift */; };
 		22AE06A52AD45D3B00BE67AD /* SWE_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06A42AD45D3B00BE67AD /* SWE_AppUITestsLaunchTests.swift */; };
 		22AE06B22AD4710900BE67AD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06B12AD4710900BE67AD /* Colors.swift */; };
-		22AE06B52AD5AEFE00BE67AD /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06B42AD5AEFE00BE67AD /* HomeScreenView.swift */; };
+		22AE06B52AD5AEFE00BE67AD /* HomeScreenViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06B42AD5AEFE00BE67AD /* HomeScreenViewOld.swift */; };
 		22AE06B72AD5BB8000BE67AD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE06B62AD5BB8000BE67AD /* SignUpView.swift */; };
 		22EE370D2AF000B800702B94 /* DirectoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE370C2AF000B800702B94 /* DirectoryView.swift */; };
 		22EE370F2AF0127100702B94 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE370E2AF0127100702B94 /* Contact.swift */; };
@@ -38,7 +38,7 @@
 		FA63158E2AE179990056FBEC /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63158D2AE179990056FBEC /* ResetPassword.swift */; };
 		FA6315902AE17E820056FBEC /* EventCheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63158F2AE17E820056FBEC /* EventCheckIn.swift */; };
 		FABB73212AF990E800ED5C4B /* sideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB73202AF990E800ED5C4B /* sideMenu.swift */; };
-		FABB73232AF9914200ED5C4B /* HomeScreenViewAlex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB73222AF9914200ED5C4B /* HomeScreenViewAlex.swift */; };
+		FABB73232AF9914200ED5C4B /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB73222AF9914200ED5C4B /* HomeScreenView.swift */; };
 		FAE0FC9D2AF1A8FB00188E2D /* AdminNewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE0FC9C2AF1A8FB00188E2D /* AdminNewEvent.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +74,7 @@
 		22AE06A22AD45D3B00BE67AD /* SWE_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWE_AppUITests.swift; sourceTree = "<group>"; };
 		22AE06A42AD45D3B00BE67AD /* SWE_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWE_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		22AE06B12AD4710900BE67AD /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		22AE06B42AD5AEFE00BE67AD /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		22AE06B42AD5AEFE00BE67AD /* HomeScreenViewOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewOld.swift; sourceTree = "<group>"; };
 		22AE06B62AD5BB8000BE67AD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		22EE370C2AF000B800702B94 /* DirectoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryView.swift; sourceTree = "<group>"; };
 		22EE370E2AF0127100702B94 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		FA63158D2AE179990056FBEC /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		FA63158F2AE17E820056FBEC /* EventCheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckIn.swift; sourceTree = "<group>"; };
 		FABB73202AF990E800ED5C4B /* sideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sideMenu.swift; sourceTree = "<group>"; };
-		FABB73222AF9914200ED5C4B /* HomeScreenViewAlex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewAlex.swift; sourceTree = "<group>"; };
+		FABB73222AF9914200ED5C4B /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		FAE0FC9C2AF1A8FB00188E2D /* AdminNewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNewEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,8 +155,8 @@
 				22AE068D2AD45D3A00BE67AD /* Preview Content */,
 				22AE06B12AD4710900BE67AD /* Colors.swift */,
 				22EE370E2AF0127100702B94 /* Contact.swift */,
-				22AE06B42AD5AEFE00BE67AD /* HomeScreenView.swift */,
-				FABB73222AF9914200ED5C4B /* HomeScreenViewAlex.swift */,
+				22AE06B42AD5AEFE00BE67AD /* HomeScreenViewOld.swift */,
+				FABB73222AF9914200ED5C4B /* HomeScreenView.swift */,
 				22EE37102AF068A300702B94 /* AdminView.swift */,
 				22AE06B62AD5BB8000BE67AD /* SignUpView.swift */,
 				22EE370C2AF000B800702B94 /* DirectoryView.swift */,
@@ -364,12 +364,12 @@
 				FA6315902AE17E820056FBEC /* EventCheckIn.swift in Sources */,
 				ECA60DC22AF04676004AEB38 /* EventListView.swift in Sources */,
 				EC7A1D682ADF0665006EF679 /* HttpResources.swift in Sources */,
-				FABB73232AF9914200ED5C4B /* HomeScreenViewAlex.swift in Sources */,
+				FABB73232AF9914200ED5C4B /* HomeScreenView.swift in Sources */,
 				ECA60DC02AF04345004AEB38 /* LoginView.swift in Sources */,
 				5F354CB12AF86F23006F19DD /* ProfileView.swift in Sources */,
 				22AE06882AD45D3800BE67AD /* SWE_AppApp.swift in Sources */,
 				FAE0FC9D2AF1A8FB00188E2D /* AdminNewEvent.swift in Sources */,
-				22AE06B52AD5AEFE00BE67AD /* HomeScreenView.swift in Sources */,
+				22AE06B52AD5AEFE00BE67AD /* HomeScreenViewOld.swift in Sources */,
 				5F354CB52AF87E13006F19DD /* ProfileEditView.swift in Sources */,
 				ECA60DC42AF0478C004AEB38 /* EventResponse.swift in Sources */,
 				FA20601F2AF418F40063C29E /* UserFeedback.swift in Sources */,
