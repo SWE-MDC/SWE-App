@@ -189,6 +189,7 @@ struct HomeScreenViewAlex: View {
                     
                 }
                 //used to display side bar menu
+                //put inside zstack
                 GeometryReader { _ in
                     HStack {
                         Spacer()
@@ -200,29 +201,30 @@ struct HomeScreenViewAlex: View {
                 }
                 //when side menu is open, it darkens the rest of the screen
                 .background(Color.black.opacity(showMenu ? 0.5 : 0))
-            } .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                .navigationTitle("Menu:")
-                .navigationBarTitleDisplayMode(.inline) //lines title up with icon
+            } //end of Zstack
+            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            .navigationTitle("Menu:")
+            .navigationBarTitleDisplayMode(.inline) //lines title up with icon
 
 
-                .toolbar{
-                    
-                    Button{
-                        //allows user to toggle the menu side bar
-                        self.showMenu.toggle()
-                    } label: {
-                        //if side menu is showing, display an "x" icon
-                        if showMenu {
-                            Image(systemName: "xmark")
-                                .font(.title)
-                                .foregroundColor(.red)
-                        } else { //side menu not showing, show 3 bars
-                            Image(systemName: "text.justify")
-                                .font(.title)
-                                .foregroundColor(.red)
-                        }
+            .toolbar{
+                
+                Button{
+                    //allows user to toggle the menu side bar
+                    self.showMenu.toggle()
+                } label: {
+                    //if side menu is showing, display an "x" icon
+                    if showMenu {
+                        Image(systemName: "xmark")
+                            .font(.title)
+                            .foregroundColor(.red)
+                    } else { //side menu not showing, show 3 bars
+                        Image(systemName: "text.justify")
+                            .font(.title)
+                            .foregroundColor(.red)
                     }
                 }
+            }
         } .navigationBarHidden(true)
             
     }
