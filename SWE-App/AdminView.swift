@@ -38,9 +38,9 @@ struct AdminView: View {
             //                        })
             //                    }
             
-            Image("Logo")
+            Image("logo2")
 //                    .position(x: width/2, y: 70)
-                .position(x: width/2, y: 110)
+                .position(x: width/2, y: 130)
 
         
             VStack() {
@@ -53,8 +53,7 @@ struct AdminView: View {
                 
                 VStack() {
                     Text("ADMIN VIEW")
-                        .font(.largeTitle)
-                        .bold()
+                    
                         .padding()
                     
                     NavigationLink(destination: AdminNewEvent()) { Text("Create New Event")}

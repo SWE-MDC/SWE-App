@@ -28,9 +28,9 @@ struct EventCheckIn: View {
 //                    .position(x: width/2, y: 0)
                     .position(x: width/2, y: 38)
                 
-                Image("Logo")
+                Image("logo2")
 //                    .position(x: width/2, y: 70)
-                    .position(x: width/2, y: 110)
+                    .position(x: width/2, y: 130)
                 
                 
                 VStack(alignment: .leading) {

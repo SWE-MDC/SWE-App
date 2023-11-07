@@ -44,9 +44,9 @@ struct UserFeedback: View {
                 //                        })
                 //                    }
                 
-                Image("Logo")
+                Image("logo2")
 //                    .position(x: width/2, y: 70)
-                    .position(x: width/2, y: 110)
+                    .position(x: width/2, y: 130)
 
                 
                 Text("User Feedback Form")
