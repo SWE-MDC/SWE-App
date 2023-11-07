@@ -50,7 +50,7 @@ struct sideMenu: View {
             .foregroundColor(.black)
             
             NavigationLink(destination: AdminView()) {
-                //take to directory
+                //take to admin view
                 Text("Admin View")
             }
             .frame(width: 180, height: 50)
@@ -60,8 +60,8 @@ struct sideMenu: View {
             .foregroundColor(.black)
             
 //TODO: changedestination link
-            NavigationLink(destination: DirectoryView()) {
-                //take to directory
+            NavigationLink(destination: ProfileView(profile: allProfiles[0])) {
+                //take to profile
                 Text("Profile")
             }
             .frame(width: 180, height: 50)
