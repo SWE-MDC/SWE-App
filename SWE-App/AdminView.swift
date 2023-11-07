@@ -53,6 +53,8 @@ struct AdminView: View {
                 
                 VStack() {
                     Text("ADMIN VIEW")
+                        .font(.largeTitle)
+                        .bold()
                         .padding()
                     
                     NavigationLink(destination: AdminNewEvent()) { Text("Create New Event")}
