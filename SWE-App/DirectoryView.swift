@@ -22,6 +22,13 @@ struct DirectoryView: View {
         NavigationView {
             
             ZStack {
+                List(contacts) { contact in
+                    NavigationLink(destination: DetailDirectoryView(contact: contact)){
+                        ContactRow(contact: contact)
+                    }
+                } .navigationBarTitle("Directory")
+                
+                
                 GeometryReader { _ in
                     HStack {
                         Spacer()
@@ -36,11 +43,10 @@ struct DirectoryView: View {
                 
                 
                 
-                List(contacts) { contact in
-                    NavigationLink(destination: DetailDirectoryView(contact: contact)){
-                        ContactRow(contact: contact)
-                    }
-                } .navigationBarTitle("Directory")
+               
+                
+                
+                
             }
             
             .toolbar{
