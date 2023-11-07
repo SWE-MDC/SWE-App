@@ -17,83 +17,130 @@ struct AdminNewEvent: View {
     @State private var addEventFailed = false;
     @State private var eventAdded = false;
     @State private var errorMsg = ""
+    @State private var showMenu: Bool = false
+    @State var menuOpened = false;
+    @State private var width = UIScreen.main.bounds.width
+
 
     var closedRange = Calendar.current.date(byAdding: .year, value: -1, to: Date())!
     
     
     var body: some View {
         NavigationView{
-            VStack() {
-                Text("New Event")
-                    .padding()
+            ZStack{
+                VStack() {
+                    Section{
+                        Text("New Event")
+                            .multilineTextAlignment(.center)
+                            .font(.largeTitle)
+                            .bold()
+                        ScrollView{
+                            TextField("Event Name/Title", text: $eventName)
+                                .padding()
+                                .frame(width: 300, height: 50)
+                                .background(Color.black.opacity(0.05))
+                                .cornerRadius(10)
+                                .textInputAutocapitalization(.never)
+                            
+                            // https://www.youtube.com/watch?v=9UovPNh4Csw
+                            Section(){
+                                DatePicker("Date & Time: ", selection: $currentTime, in: Date()...)
+                                //DatePicker("Date & Time: ", selection: $currentTime, in: Date()...).labelsHidden() use this if you don't want the label to show.
+                            }
+                            .padding()
+                            .frame(width: 300, height: 80)
+                            .background(Color.black.opacity(0.05))
+                            .cornerRadius(10)
+                            
+                            TextField("Event Location", text: $eventLocation)
+                                .padding()
+                                .frame(width: 300, height: 50)
+                                .background(Color.black.opacity(0.05))
+                                .cornerRadius(10)
+                                .textInputAutocapitalization(.never)
+                            
+                            TextField("Event Details", text: $eventDetails, axis: .vertical)
+                                .padding()
+                                .frame(width: 300, height: 200)
+                                .background(Color.black.opacity(0.05))
+                                .cornerRadius(10)
+                                .textInputAutocapitalization(.never)
+                            
+                            Button("Create New Event"){
+                                //creates a new event in database
+                                //need to update event name in homescreenview
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "y-M-d hh:mm"
+                                let s_date = dateFormatter.string(from: currentTime)
+                                errorMsg = ""
+                                addEventFailed = false
+                                eventAdded = false
+                                createEvent(title: eventName, details: eventDetails, date: s_date, location: eventLocation)
+                                eventAdded = !addEventFailed
+                                
+                            }.alert(errorMsg, isPresented: $addEventFailed)
+                            {
+                                Button("OK", role: .cancel) { }
+                            }
+                            
+                            .foregroundColor(.white)
+                            .frame(width: 300, height: 50)
+                            .background(Color.customPurple)
+                            .cornerRadius(10)
+                            
+                            NavigationLink(destination: AdminView(), isActive: $eventAdded) { Text("Back to Admin Screen")}
+                                .frame(width: 300, height: 50)
+                            
+                            //                Section(header:Text("Result")){ //you can remove this
+                            //                    Text("\(currentTime)")
+                            //                }
+                        }//end scroll view
+                        .frame(height: 600)
+                        .position(x: width/2, y:130)
+                        
+                    } //end section
+                    .position(x: width/2, y: 140)
+                    
+                } //end VStack
                 
-                TextField("Event Name/Title", text: $eventName)
-                    .padding()
-                    .frame(width: 300, height: 50)
-                    .background(Color.black.opacity(0.05))
-                    .cornerRadius(10)
-                    .textInputAutocapitalization(.never)
-                
-//                TextField("Event Date", text: $eventDate)
-//                    .padding()
-//                    .frame(width: 300, height: 50)
-//                    .background(Color.black.opacity(0.05))
-//                    .cornerRadius(10)
-//                    .textInputAutocapitalization(.never)
-                
-                // https://www.youtube.com/watch?v=9UovPNh4Csw
-                Section(){
-                    DatePicker("Date & Time: ", selection: $currentTime, in: Date()...)
-                    //DatePicker("Date & Time: ", selection: $currentTime, in: Date()...).labelsHidden() use this if you don't want the label to show.
+                //used to display side bar menu
+                //put inside zstack
+                GeometryReader { _ in
+                    HStack {
+                        Spacer()
+                        sideMenu()
+                        //hides the side menu with showMenu is false
+                        .offset(x: showMenu ? 0 : UIScreen.main.bounds.width)
+                        .animation(.easeInOut(duration: 0.3), value: showMenu)
+                    }
                 }
-                .padding()
-                .frame(width: 300, height: 80)
-                .background(Color.black.opacity(0.05))
-                .cornerRadius(10)
+                //when side menu is open, it darkens the rest of the screen
+                .background(Color.black.opacity(showMenu ? 0.5 : 0))
+            }// end ZStack
+            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+//            .navigationTitle("Menu:")
+//            .navigationBarTitleDisplayMode(.inline) //lines title up with icon
 
-                TextField("Event Location", text: $eventLocation)
-                    .padding()
-                    .frame(width: 300, height: 50)
-                    .background(Color.black.opacity(0.05))
-                    .cornerRadius(10)
-                    .textInputAutocapitalization(.never)
+
+            .toolbar{
                 
-                TextField("Event Details", text: $eventDetails, axis: .vertical)
-                    .padding()
-                    .frame(width: 300, height: 200)
-                    .background(Color.black.opacity(0.05))
-                    .cornerRadius(10)
-                    .textInputAutocapitalization(.never)
-                
-                Button("Create New Event"){
-                    //creates a new event in database
-                    //need to update event name in homescreenview
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "y-M-d hh:mm"
-                    let s_date = dateFormatter.string(from: currentTime)
-                    errorMsg = ""
-                    addEventFailed = false
-                    eventAdded = false
-                    createEvent(title: eventName, details: eventDetails, date: s_date, location: eventLocation)
-                    eventAdded = !addEventFailed
-       
-                }.alert(errorMsg, isPresented: $addEventFailed)
-                {
-                    Button("OK", role: .cancel) { }
+                Button{
+                    //allows user to toggle the menu side bar
+                    self.showMenu.toggle()
+                } label: {
+                    //if side menu is showing, display an "x" icon
+                    if showMenu {
+                        Image(systemName: "xmark")
+                            .font(.title)
+                            .foregroundColor(.black)
+                    } else { //side menu not showing, show 3 bars
+                        Image(systemName: "text.justify")
+                            .font(.title)
+                            .foregroundColor(Color.customYellow)
+                    }
                 }
-                
-                .foregroundColor(.white)
-                .frame(width: 300, height: 50)
-                .background(Color.customPurple)
-                .cornerRadius(10)
-                
-                NavigationLink(destination: AdminView(), isActive: $eventAdded) { Text("Back to Admin Screen")}
-                    .frame(width: 300, height: 50)
-                
-//                Section(header:Text("Result")){ //you can remove this
-//                    Text("\(currentTime)")
-//                }
             }
+           
         }.navigationBarHidden(true)
     }
     
