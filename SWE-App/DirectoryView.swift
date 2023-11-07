@@ -11,21 +11,26 @@ import Foundation
 //TODO: add a go back home button
 
 struct DirectoryView: View {
+    
+    @State private var showMenu: Bool = false
+    @State var menuOpened = false;
+    
     var body: some View {
+        
         NavigationView {
             List(contacts) { contact in
                 NavigationLink(destination: DetailDirectoryView(contact: contact)){
                     ContactRow(contact: contact)
                 }
             } .navigationBarTitle("Directory")
-        }
-        
-    }
-}
+        } //end navigation view
+        NavigationLink(destination: HomeScreenView()) { Text("Back to Home Screen")}
+            .frame(width: 300, height: 50)
+            .foregroundStyle(.black)
+    } //end body
+} //end directory view
 
-#Preview {
-    DirectoryView()
-}
+
 
 struct ContactRow: View {
     
@@ -47,4 +52,8 @@ struct ContactRow: View {
             }
         }
     }
+}
+
+#Preview {
+    DirectoryView()
 }
