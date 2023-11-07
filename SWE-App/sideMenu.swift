@@ -25,6 +25,13 @@ struct sideMenu: View {
                 .padding(.horizontal, 16)
             // MARK: - Content
             
+            NavigationLink(destination: HomeScreenView()) { Text("Home")}
+                .frame(width: 180, height: 50)
+                .font(.system(size: 20, design: .rounded))
+                .background(Color.customPurple)
+                .cornerRadius(10)
+                .foregroundColor(.black)
+            
             NavigationLink(destination: EventView()) { Text("Future Events")}
                 .frame(width: 180, height: 50)
                 .font(.system(size: 20, design: .rounded))
