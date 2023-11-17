@@ -63,6 +63,7 @@ struct LoginView: View {
                         loginFailed = false
                         errorMsg = ""
                         authenticateUser(username: username, password: password)
+                        
                     }.alert(errorMsg, isPresented: $loginFailed)
                     {
                         Button("OK", role: .cancel) { }
@@ -73,7 +74,8 @@ struct LoginView: View {
                     .cornerRadius(10)
                     
                     
-                    NavigationLink(destination: SignUpView()) { Text("Create an account").padding(15)}
+                    NavigationLink(destination: SignUpView()) { Text("Create an account").padding(15)
+                    }
                     //                    Spacer()
                     //                        .frame(height: 0)
                     
@@ -81,9 +83,6 @@ struct LoginView: View {
                     Spacer()
                         .frame(height: 20)
                     
-//                    NavigationLink(destination: AdminView()) {
-//                        Text("ADMIN VIEW")
-//                    }
 
                     NavigationLink(destination: HomeScreenView(), isActive: $showingHomeScreen) {
                     }
@@ -120,8 +119,8 @@ struct LoginView: View {
                     wrongPassword = 0
                     showingHomeScreen = true
                     GlobalStatus.token = resp.token!
-                    GlobalStatus.canAddEvent = (resp.role!.name == "admin" || resp.role!.name == "organizer")
-                    print(GlobalStatus.canAddEvent)
+                    GlobalStatus.isAdmin = (resp.role!.name == "admin" || resp.role!.name == "organizer")
+                    print(GlobalStatus.isAdmin)
                 } else {
                     wrongPassword = 2
                     errorMsg = resp.message

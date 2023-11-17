@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct AdminNewEvent: View {
+struct CreateEventView: View {
     @State private var eventName = ""
 //    @State private var eventDate = ""
     @State private var eventDetails = ""
@@ -88,7 +88,7 @@ struct AdminNewEvent: View {
                             .background(Color.customPurple)
                             .cornerRadius(10)
                             
-                            NavigationLink(destination: AdminView(), isActive: $eventAdded) { Text("Back to Admin Screen")}
+                            NavigationLink(destination: HomeScreenView(), isActive: $eventAdded) { Text("Back to Home Screen")}
                                 .frame(width: 300, height: 50)
                             
                             //                Section(header:Text("Result")){ //you can remove this
@@ -184,5 +184,5 @@ struct AdminNewEvent: View {
 }
 
 #Preview {
-    AdminNewEvent()
+    CreateEventView()
 }

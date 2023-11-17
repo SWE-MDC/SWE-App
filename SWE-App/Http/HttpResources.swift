@@ -10,11 +10,19 @@ import Foundation
 struct HttpResources {
 //    static var url_base = "http://localhost:8081"
     static var url_base = "http://hp.gengl.me:8081"
+    // User management
     static var url_login = url_base + "/api/v1/auth/signin"
     static var url_signup = url_base + "/api/v1/auth/signup"
+    static var url_reset_password = url_base + "/api/v1/auth/reset"
     static var url_get_role = url_base + "/api/v1/resource/user/role"
+    // Event management
     static var url_list_events = url_base + "/api/v1/resource/event/get"
     static var url_add_event = url_base + "/api/v1/resource/event/add"
+    static var url_get_event_details = url_base + "/api/v1/resource/user_event"
+    // Event details
+    static var url_update_event_details = url_base + "/api/v1/resource/user_event"
+    static var url_checkin_event = url_base + "/api/v1/resource/user_event/checkin"
+    static var url_get_attendees = url_base + "/api/v1/resource/user_event/attendees"
     
     static func prepareGetRequest(s_url: String,
                                   token: String) -> URLRequest {

@@ -32,13 +32,6 @@ struct sideMenu: View {
                 .cornerRadius(10)
                 .foregroundColor(.black)
             
-            NavigationLink(destination: EventView()) { Text("Future Events")}
-                .frame(width: 180, height: 50)
-                .font(.system(size: 20, design: .rounded))
-                .background(Color.customPurple)
-                .cornerRadius(10)
-                .foregroundColor(.black)
-            
             NavigationLink(destination: DirectoryView()) {
                 //take to directory
                 Text("Directory")
@@ -49,15 +42,16 @@ struct sideMenu: View {
             .cornerRadius(10)
             .foregroundColor(.black)
             
-            NavigationLink(destination: AdminView()) {
+            NavigationLink(destination: CreateEventView()) {
                 //take to admin view
-                Text("Admin View")
+                Text("Create Event")
             }
             .frame(width: 180, height: 50)
             .font(.system(size: 20, design: .rounded))
             .background(Color.customPurple)
             .cornerRadius(10)
             .foregroundColor(.black)
+            .disabled(!GlobalStatus.isAdmin)
             
 //TODO: changedestination link
             NavigationLink(destination: ProfileView(profile: allProfiles[0])) {

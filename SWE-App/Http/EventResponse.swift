@@ -77,11 +77,3 @@ public class Event: Identifiable, Decodable {
         self.group = try container.decodeIfPresent(String.self, forKey: .group)
     }
 }
-
-//var events = [
-//    Event(title: "Event1", date: "2023 Oct 10", location: "Loc 1"),
-//    Event(title: "Event2", date: "2023 Oct 20", location: "Loc 2"),
-//    Event(title: "Event3", date: "2023 Oct 30", location: "Loc 3"),
-//]
-
-//var events = [Event]()

@@ -14,7 +14,9 @@ struct ResetPassword: View {
     @State private var height = UIScreen.main.bounds.height
     
     @State private var email = ""
-    
+    @State private var resetSent: Bool = false
+    @State private var resetError: Bool = false
+    @State private var resetErrorMsg: String = ""
 
     
     var body: some View {
@@ -67,9 +69,16 @@ struct ResetPassword: View {
                         .frame(height: 50)
                     
 
-                    Button("Continue") {
-                        //process request and land on a confirmation window
+                    Button("Send Reset Email") {
+                        resetError = false
+                        resetErrorMsg = ""
+                        reset(email: email)
                     }
+                    .alert(resetErrorMsg, isPresented: $resetError)
+                    {
+                        Button("OK", role: .cancel) { }
+                    }
+                    .disabled(resetSent)
                     .foregroundColor(.white)
                     .frame(width: 300, height: 50)
                     .background(Color.customPurple)
@@ -79,13 +88,44 @@ struct ResetPassword: View {
 //                        NavigationLink(destination: HomeScreenView()) { Text("Reset Password")}
 //                    }
 //                    .frame(width: 300, height: 50)
-                    NavigationLink(destination: LoginView()) { Text("Back to Login")}
+                    NavigationLink(destination: LoginView(), isActive: $resetSent) { Text("Back to Login")}
                         .frame(width: 300, height: 50)
 
                     
                 }
             }
         }.navigationBarHidden(true)
+    }
+    
+    func reset(email:String) {
+        let semaphore = DispatchSemaphore(value: 0)
+        // prepare json data
+        let request = HttpResources.prepareGetRequest(s_url: HttpResources.url_reset_password + "/" + email, token: "")
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                    guard let data = data, error == nil else {
+                        semaphore.signal()
+                        return
+                    }
+                    
+                    do {
+                        print(data)
+                         let resp = try JSONDecoder().decode(GenericResponse.self, from: data)
+                        if resp.status == 200 {
+                            resetSent = true
+                        } else
+                        {
+                            resetError = true
+                            resetErrorMsg = resp.message
+                        }
+                        print(resp)
+                    } catch let error {
+                        print(error)
+                    }
+
+                    semaphore.signal()
+                }
+        task.resume()
+        semaphore.wait()
     }
 }
 

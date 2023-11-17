@@ -56,13 +56,13 @@ struct AdminView: View {
                     
                         .padding()
                     
-                    NavigationLink(destination: AdminNewEvent()) { Text("Create New Event")}
+                    NavigationLink(destination: CreateEventView()) { Text("Create New Event")}
                         .foregroundColor(.white)
                         .frame(width: 300, height: 50)
                         .background(Color.customPurple)
                         .cornerRadius(10)
                     
-                    NavigationLink(destination: AdminNewEvent()) { Text("View Reports. NOTE: still needs link")}
+                    NavigationLink(destination: CreateEventView()) { Text("View Reports.")}
                         .foregroundColor(.white)
                         .frame(width: 300, height: 50)
                         .background(Color.customPurple)

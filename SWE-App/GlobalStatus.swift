@@ -9,5 +9,5 @@ import Foundation
 
 struct GlobalStatus {
     static var token = ""
-    static var canAddEvent = false
+    static var isAdmin = false
 }
