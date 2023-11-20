@@ -10,63 +10,127 @@ import SwiftUI
 struct ProfileEditView: View {
     
     /* Note: currently not allowing changing email
-     because I don't know if that would mess up
-     registration/creating account database stuff */
+     because it would mess up registration/account creation */
     @State private var name = ""
-    @State private var pronouns = ""
-    @State private var major = ""
-    @State private var year = ""
+    @State private var selectedPronouns = ""
+    @State private var selectedMajor = ""
+    @State private var selectedYear = ""
+    
+    // These handle information about affinity group memberships
+    @State private var memberOfGroup1 = false;
+    @State private var memberOfGroup2 = false;
+    @State private var memberOfGroup3 = false;
+    @State private var memberOfGroup4 = false;
+    @State private var memberOfGroup5 = false;
+    @State private var memberOfGroup6 = false;
+    @State private var memberOfGroup7 = false;
+    @State private var memberOfGroup8 = false;
+    
+    // Names of all affinity groups
+    @State private var group1Name = "African-American Affinity Group"
+    @State private var group2Name = "Asian Connections Affinity Group"
+    @State private var group3Name = "HeForSWE Affinity Group"
+    @State private var group4Name = "Latinx Affinity Group"
+    @State private var group5Name = "LGBTQ+ Affinity Group"
+    @State private var group6Name = "Native American/Indigenous Peoples Affinity Group"
+    @State private var group7Name = "Military & Veterans Affinity Group"
+    @State private var group8Name = "DisAbilityInclusion Affinity Group"
+    
+    let pronounOptions = ["she/her", "he/him", "they/them", "she/they", "he/they", "Prefer not to answer"]
+    
+    // Alphabetical list of all options for majors in the College of Engineering
+    let majorOptions = ["Aerospace Engineering", "Architecture", "Aviation", "Biomedical Engineering", "Chemical Engineering", "City and Regional Planning", "Civil Engineering", "Computer Science and Engineering", "Electrical and Computer Engineering", "Engineering Physics", "Engineering Technology", "Environmental Engineering", "Food, Agricultural and Biological Engineering", "Industrial and Systems Engineering", "Landscape Architecture", "Materials Science and Engineering", "Mechanical Engineering", "Welding Engineering"]
+    
+    // Currently lists only Freshman to Senior, need to ask how they want 5th year and above to be represented
+    let yearOptions = ["Freshman", "Sophomore", "Junior", "Senior"]
+    
     @State private var showMenu: Bool = false
     @State var menuOpened = false;
     
     var body: some View {
         NavigationView{
             ZStack{
-                VStack() {
-                    /*
-                     Need to figure out how to allow changing of avatar/profile picture
-                     */
-                    Text("Edit Profile Information")
-                        .font(.largeTitle)
-                        .bold()
-                        .multilineTextAlignment(.center)
-                        .padding()
-                    
-                    TextField("Updated name:", text: $name)
-                        .padding()
-                        .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.05))
-                        .cornerRadius(10)
-                        .textInputAutocapitalization(.never)
-                    
-                    TextField("Updated pronouns:", text: $pronouns)
-                        .padding()
-                        .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.05))
-                        .cornerRadius(10)
-                        .textInputAutocapitalization(.never)
-                    
-                    TextField("Updated major:", text: $major)
-                        .padding()
-                        .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.05))
-                        .cornerRadius(10)
-                        .textInputAutocapitalization(.never)
-                    
-                    TextField("Updated year:", text: $year)
-                        .padding()
-                        .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.05))
-                        .cornerRadius(10)
-                        .textInputAutocapitalization(.never)
-                    
-                    Button("Submit"){
-                        //updates profile info in the database
-                    }.foregroundColor(.white)
-                        .frame(width: 300, height: 50)
-                        .background(Color.customPurple)
-                        .cornerRadius(10)
-                    
+                VStack {
+                    NavigationView {
+                        Form {
+                            Text("Edit Profile")
+                                .font(.largeTitle)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                            // handles name updaytes
+                            Section("Update name") {
+                                TextField("Name:", text: $name)
+                                    .padding()
+                                    .frame(width: 300, height: 50)
+                                    .background(Color.black.opacity(0.05))
+                                    .cornerRadius(10)
+                                    .textInputAutocapitalization(.never)
+                            }
+                            // handles pronoun updates
+                            Section("Update Pronouns") {
+                                Picker("Pronouns", selection: $selectedPronouns) {
+                                    ForEach(pronounOptions, id: \.self) {
+                                        Text($0)
+                                    }
+                                    .pickerStyle(.menu)
+                                }
+                            }
+                            // handles major updates
+                            Section("Update Major"){
+                                Picker("Major", selection: $selectedMajor) {
+                                    ForEach(majorOptions, id: \.self) {
+                                        Text($0)
+                                    }
+                                    .pickerStyle(.menu)
+                                }
+                            }
+                            // handles year updates
+                            Section("Update Year"){
+                                Picker("Year in school", selection: $selectedYear) {
+                                    ForEach(yearOptions, id: \.self) {
+                                        Text($0)
+                                    }
+                                    .pickerStyle(.menu)
+                                }
+                            }
+                            // handles affinity group membership updates
+                            Section("Update Affinity Group Memberships"){
+                                
+                                Toggle(isOn: $memberOfGroup1) {
+                                    Text(group1Name)
+                                }
+                                Toggle(isOn: $memberOfGroup2) {
+                                    Text(group2Name)
+                                }
+                                Toggle(isOn: $memberOfGroup3) {
+                                    Text(group3Name)
+                                }
+                                Toggle(isOn: $memberOfGroup4) {
+                                    Text(group4Name)
+                                }
+                                Toggle(isOn: $memberOfGroup5) {
+                                    Text(group5Name)
+                                }
+                                Toggle(isOn: $memberOfGroup6) {
+                                    Text(group6Name)
+                                }
+                                Toggle(isOn: $memberOfGroup7) {
+                                    Text(group7Name)
+                                }
+                                Toggle(isOn: $memberOfGroup8) {
+                                    Text(group8Name)
+                                }
+                            }
+                            // allows useer to submit updated profile
+                            Button("Submit"){
+                                //updates profile info in the database
+                            }.foregroundColor(.white)
+                                .frame(width: 300, height: 50)
+                                .background(Color.customPurple)
+                                .cornerRadius(10)
+                        } //end Form
+                        
+                    } //end NavigationView
                     /* Allows naviagtion back to profile screen with or without submitting new profile info */
                     NavigationLink(destination: ProfileView(profile: allProfiles[0])) { Text("Back to Profile Screen")}
                         .frame(width: 300, height: 50)

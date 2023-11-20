@@ -27,8 +27,6 @@ struct ProfileView: View {
                         .shadow(radius: 3)
                         .padding([.top], 80)
                     
-                    
-                    
                     Form {
                         HStack{
                             Text("Name")
@@ -56,10 +54,13 @@ struct ProfileView: View {
                             Text(profile.year)
                         }
                     }
-                    
+                    .scrollContentBackground(.hidden)
+                    .background(Color.customPurple)
                     NavigationLink(destination: ProfileEditView()) { Text("Edit Profile Information")}
                         .frame(width: 300, height: 50)
+                        .foregroundColor(.black)
                 } //end VStack
+                //.background(Color.customPurple)
                 //used to display side bar menu
                 //put inside zstack
                 GeometryReader { _ in
