@@ -30,7 +30,7 @@ struct sideMenu: View {
                 .font(.system(size: 20, design: .rounded))
                 .background(Color.customPurple)
                 .cornerRadius(10)
-                .foregroundColor(.black)
+                .foregroundColor(.white)
             
             NavigationLink(destination: DirectoryView()) {
                 //take to directory
@@ -40,18 +40,9 @@ struct sideMenu: View {
             .font(.system(size: 20, design: .rounded))
             .background(Color.customPurple)
             .cornerRadius(10)
-            .foregroundColor(.black)
+            .foregroundColor(.white)
             
-            NavigationLink(destination: CreateEventView()) {
-                //take to admin view
-                Text("Create Event")
-            }
-            .frame(width: 180, height: 50)
-            .font(.system(size: 20, design: .rounded))
-            .background(Color.customPurple)
-            .cornerRadius(10)
-            .foregroundColor(.black)
-            .disabled(!GlobalStatus.isAdmin)
+           
             
 //TODO: changedestination link
             NavigationLink(destination: ProfileView(profile: allProfiles[0])) {
@@ -62,7 +53,7 @@ struct sideMenu: View {
             .font(.system(size: 20, design: .rounded))
             .background(Color.customPurple)
             .cornerRadius(10)
-            .foregroundColor(.black)
+            .foregroundColor(.white)
             
             NavigationLink(destination: UserFeedback()) {
                 Text("App Feedback")
@@ -71,7 +62,21 @@ struct sideMenu: View {
             .font(.system(size: 20, design: .rounded))
             .background(Color.customPurple)
             .cornerRadius(10)
-            .foregroundColor(.black)
+            .foregroundColor(.white)
+            
+            
+            NavigationLink(destination: CreateEventView()) {
+                //take to admin view
+                Text("Create Event")
+            }
+            .frame(width: 180, height: 50)
+            .font(.system(size: 20, design: .rounded))
+            .background(Color.customPurple)
+            .cornerRadius(10)
+            .foregroundColor(.white)
+            .disabled(!GlobalStatus.isAdmin)
+            .opacity(!GlobalStatus.isAdmin ? 0 : 1)
+            
             
             NavigationLink(destination: LoginView()) {
                 Text("Log Out")
@@ -80,7 +85,7 @@ struct sideMenu: View {
             .font(.system(size: 20, design: .rounded))
             .background(Color.customPurple)
             .cornerRadius(10)
-            .foregroundColor(.black)
+            .foregroundColor(.white)
 
             Spacer()
 
