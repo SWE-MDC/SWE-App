@@ -33,7 +33,10 @@ struct HomeScreenView: View {
                         EventRow(event: e)
                     }
                     .navigationTitle("Latest Events")
-                    
+                    .frame(width: 350, height: 550)
+                    .position(x: width/2, y: 450)
+
+
                     
                     NavigationLink(destination: LoginView()) {
                             Text("Log Out")
