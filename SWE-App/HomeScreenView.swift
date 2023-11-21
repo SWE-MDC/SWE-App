@@ -29,13 +29,19 @@ struct HomeScreenView: View {
                 
 
                 VStack{
+                    Text("Latest Events")
+                        .font(.largeTitle)
+                        .bold()
+                        .position(x: width/2, y: 120)
+
                     List(events) {e in
                         EventRow(event: e)
                     }
-                    .navigationTitle("Latest Events")
-                    .frame(width: 350, height: 550)
-                    .position(x: width/2, y: 450)
-
+//                    .navigationTitle("Latest Events")
+                    .frame(width: 350, height: 570)
+                    .position(x: width/2, y: 60)
+                    
+                
 
                     
                     NavigationLink(destination: LoginView()) {
