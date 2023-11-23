@@ -35,11 +35,33 @@ struct HomeScreenView: View {
                         .position(x: width/2, y: 120)
                         .foregroundColor(.white)
 
-                    List(events) {e in
+                List(events) {e in
                         EventRow(event: e)
+                    //Spacer()
+                        .foregroundColor(.black)
+                        .listRowBackground(
+                                               RoundedRectangle(cornerRadius: 5)
+                                                   .background(.clear)
+                                                   .foregroundColor(.white)
+                                                   .padding(
+                                                       EdgeInsets(
+                                                           top: 2,
+                                                           leading: 10,
+                                                           bottom: 2,
+                                                           trailing: 10
+                                                       )
+                                                   )
+                                           )
+                     .listRowSeparator(.hidden)
+
+                        //.listRowSeparatorTint(.customPurple)
+
                     }
+                .scrollContentBackground(.hidden)
                     .frame(width: 350, height: 570)
                     .position(x: width/2, y: 60)
+                    
+                    
                     
                 
 
