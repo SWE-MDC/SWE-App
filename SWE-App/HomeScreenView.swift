@@ -33,11 +33,11 @@ struct HomeScreenView: View {
                         .font(.largeTitle)
                         .bold()
                         .position(x: width/2, y: 120)
+                        .foregroundColor(.white)
 
                     List(events) {e in
                         EventRow(event: e)
                     }
-//                    .navigationTitle("Latest Events")
                     .frame(width: 350, height: 570)
                     .position(x: width/2, y: 60)
                     
@@ -114,11 +114,11 @@ struct HomeScreenView: View {
             
             VStack(alignment: .leading) {
                 NavigationLink(destination: UserEventDetailView(eventId: event.id)) {
-                    Text(event.title)
-                        .font(.system(size: 15, weight: .medium))
                     
-                    HStack{
-                        Text(event.location)
+                    
+                    VStack(alignment: .leading){
+                        Text(event.title)
+                            .font(.system(size: 21, weight: .medium))
                         Text(event.date)
                     }
                 }
