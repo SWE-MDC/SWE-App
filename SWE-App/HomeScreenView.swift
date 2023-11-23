@@ -34,6 +34,9 @@ struct HomeScreenView: View {
                         .bold()
                         .position(x: width/2, y: 120)
                         .foregroundColor(.white)
+                    
+                    
+                    
 
                 List(events) {e in
                         EventRow(event: e)
@@ -58,7 +61,7 @@ struct HomeScreenView: View {
 
                     }
                 .scrollContentBackground(.hidden)
-                    .frame(width: 350, height: 570)
+                            .frame(width: 400, height: 570)
                     .position(x: width/2, y: 60)
                     
                     
@@ -120,12 +123,16 @@ struct HomeScreenView: View {
             do {
                 let event = try await getEvents()
                 events = event.events
+                events.sort {
+                    $0.date < $1.date
+                }
+                
             } catch HttpErrors.invalidResponse {
                  print("Invalid response")
             } catch HttpErrors.parseError {
                 print("Parse error")
             } catch {
-                print("Unknow error")
+                print("Unknown error")
             }
         }
     }
