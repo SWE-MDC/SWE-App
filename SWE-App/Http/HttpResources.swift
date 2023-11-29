@@ -23,6 +23,8 @@ struct HttpResources {
     static var url_update_event_details = url_base + "/api/v1/resource/user_event"
     static var url_checkin_event = url_base + "/api/v1/resource/user_event/checkin"
     static var url_get_attendees = url_base + "/api/v1/resource/user_event/attendees"
+    // User Profile
+    static var url_user_profile = url_base + "/api/v1/resource/user/profile"
     
     static func prepareGetRequest(s_url: String,
                                   token: String) -> URLRequest {

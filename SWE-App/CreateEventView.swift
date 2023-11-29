@@ -179,7 +179,6 @@ struct CreateEventView: View {
         task.resume()
         semaphore.wait()
         addEventFailed = (errorMsg != "")
- 
     }
 }
 

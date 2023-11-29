@@ -11,10 +11,11 @@ struct ProfileEditView: View {
     
     /* Note: currently not allowing changing email
      because it would mess up registration/account creation */
-    @State private var name = ""
-    @State private var selectedPronouns = ""
-    @State private var selectedMajor = ""
-    @State private var selectedYear = ""
+    @State public var firstName: String = ""
+    @State public var lastName: String = ""
+    @State public var selectedPronouns:String = ""
+    @State public var selectedMajor:String = ""
+    @State public var selectedYear:String = ""
     
     // These handle information about affinity group memberships
     @State private var memberOfGroup1 = false;
@@ -35,6 +36,10 @@ struct ProfileEditView: View {
     @State private var group6Name = "Native American/Indigenous Peoples Affinity Group"
     @State private var group7Name = "Military & Veterans Affinity Group"
     @State private var group8Name = "DisAbilityInclusion Affinity Group"
+    
+    @State private var updateFailed = false;
+    @State private var profileUpdated = false;
+    @State private var errorMsg = ""
     
     let pronounOptions = ["she/her", "he/him", "they/them", "she/they", "he/they", "Prefer not to answer"]
     
@@ -59,7 +64,13 @@ struct ProfileEditView: View {
                                 .multilineTextAlignment(.center)
                             // handles name updaytes
                             Section("Update name") {
-                                TextField("Name:", text: $name)
+                                TextField("First Name", text: $firstName)
+                                    .padding()
+                                    .frame(width: 300, height: 50)
+                                    .background(Color.black.opacity(0.05))
+                                    .cornerRadius(10)
+                                    .textInputAutocapitalization(.never)
+                                TextField("Last Name", text: $lastName)
                                     .padding()
                                     .frame(width: 300, height: 50)
                                     .background(Color.black.opacity(0.05))
@@ -124,7 +135,16 @@ struct ProfileEditView: View {
                             // allows useer to submit updated profile
                             Button("Submit"){
                                 //updates profile info in the database
-                            }.foregroundColor(.white)
+                                errorMsg = ""
+                                updateFailed = false
+                                profileUpdated = false
+                                updateEvent(firstName: firstName, lastName: lastName, pronouns: selectedPronouns, year: selectedYear, major: selectedMajor)
+                            }
+                            .alert(errorMsg, isPresented: $updateFailed)
+                            {
+                                Button("OK", role: .cancel) { }
+                            }
+                            .foregroundColor(.white)
                                 .frame(width: 300, height: 50)
                                 .background(Color.customPurple)
                                 .cornerRadius(10)
@@ -132,7 +152,7 @@ struct ProfileEditView: View {
                         
                     } //end NavigationView
                     /* Allows naviagtion back to profile screen with or without submitting new profile info */
-                    NavigationLink(destination: ProfileView(profile: allProfiles[0])) { Text("Back to Profile Screen")}
+                    NavigationLink(destination: ProfileView(), isActive: $profileUpdated) { Text("Back to Profile Screen")}
                         .frame(width: 300, height: 50)
                 } //end VStack
                 //used to display side bar menu
@@ -155,7 +175,6 @@ struct ProfileEditView: View {
 
 
             .toolbar{
-                
                 Button{
                     //allows user to toggle the menu side bar
                     self.showMenu.toggle()
@@ -173,6 +192,45 @@ struct ProfileEditView: View {
                 }
             }
         }.navigationBarHidden(true)
+    }
+    
+    func updateEvent(firstName: String, lastName: String, pronouns: String, year: String, major: String) {
+        let semaphore = DispatchSemaphore(value: 0)
+        // prepare json data
+        let json: [String: Any] = ["firstName": firstName,
+                                   "lastName": lastName,
+                                   "pronouns": pronouns,
+                                   "year": year,
+                                   "major": major
+                                  ]
+        let request = HttpResources.preparePostRequest(s_url: HttpResources.url_user_profile, json: json, token: GlobalStatus.token)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                errorMsg = error?.localizedDescription ?? "No data"
+                semaphore.signal()
+                return
+            }
+            
+            do {
+                 let resp = try JSONDecoder().decode(GenericResponse.self, from: data)
+                
+                if resp.status == 200 {
+                    errorMsg = ""
+                    profileUpdated = true
+                } else {
+                    errorMsg = resp.message
+                }
+            } catch let error {
+                errorMsg = "Parse error"
+                print(error)
+            }
+
+            semaphore.signal()
+        }
+        
+        task.resume()
+        semaphore.wait()
+        updateFailed = (errorMsg != "")
     }
 }
 

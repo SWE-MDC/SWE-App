@@ -45,7 +45,7 @@ struct sideMenu: View {
            
             
 //TODO: changedestination link
-            NavigationLink(destination: ProfileView(profile: allProfiles[0])) {
+            NavigationLink(destination: ProfileView()) {
                 //take to profile
                 Text("Profile")
             }

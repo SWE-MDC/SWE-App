@@ -11,14 +11,13 @@ struct ProfileView: View {
     @State private var showMenu: Bool = false
     @State var menuOpened = false;
     @State private var width = UIScreen.main.bounds.width
-
-    let profile: ProfileInfo
+    @State var profile: UserProfileResponse = UserProfileResponse()
     
     var body: some View {
         NavigationView{
             ZStack{
                 VStack() {
-                    Image(profile.image)
+                    Image("Logo")
                         .resizable()
 //                        .aspectRatio(contentMode: .fill)
                         .frame(width: 150, height:150)
@@ -29,9 +28,14 @@ struct ProfileView: View {
                     
                     Form {
                         HStack{
-                            Text("Name")
+                            Text("First Name")
                             Spacer()
-                            Text(profile.name)
+                            Text(profile.firstName ?? "")
+                        }
+                        HStack{
+                            Text("Last Name")
+                            Spacer()
+                            Text(profile.lastName ?? "")
                         }
                         HStack{
                             Text("Email")
@@ -41,22 +45,26 @@ struct ProfileView: View {
                         HStack{
                             Text("Pronouns")
                             Spacer()
-                            Text(profile.pronouns)
+                            Text(profile.pronouns ?? "")
                         }
                         HStack{
                             Text("Major")
                             Spacer()
-                            Text(profile.major)
+                            Text(profile.major ?? "")
                         }
                         HStack{
                             Text("Year")
                             Spacer()
-                            Text(profile.year)
+                            Text(profile.year ?? "")
                         }
                     }
                     .scrollContentBackground(.hidden)
                     .background(Color.customPurple)
-                    NavigationLink(destination: ProfileEditView()) { Text("Edit Profile Information")}
+                    NavigationLink(destination: ProfileEditView(firstName: profile.firstName ?? "",
+                                                                lastName: profile.lastName ?? "",
+                                                                selectedPronouns: profile.pronouns ?? "",
+                                                                selectedMajor: profile.major ?? "",
+                                                                selectedYear: profile.year ?? "")) { Text("Edit Profile Information")}
                         .frame(width: 300, height: 50)
                         .foregroundColor(.black)
                 } //end VStack
@@ -99,9 +107,37 @@ struct ProfileView: View {
                 }
             }
         }.navigationBarHidden(true)
+            .task {
+                do {
+                    let resp = try await getUserProfile()
+                    profile = resp
+                } catch HttpErrors.invalidResponse {
+                     print("Invalid response")
+                } catch HttpErrors.parseError {
+                    print("Parse error")
+                } catch {
+                    print("Unknow error")
+                }
+                
+            }
+    }
+    
+    func getUserProfile() async throws -> UserProfileResponse {
+        let request = HttpResources.prepareGetRequest(s_url: HttpResources.url_user_profile, token: GlobalStatus.token)
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw HttpErrors.invalidResponse
+        }
+
+        do {
+             return try JSONDecoder().decode(UserProfileResponse.self, from: data)
+        } catch let error {
+            print(error)
+            throw HttpErrors.parseError
+        }
     }
 }
 
 #Preview {
-    ProfileView(profile: allProfiles[0])
+    ProfileView()
 }
