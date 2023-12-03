@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-
-//add in account sign up
-
 struct LoginView: View {
     @State private var username = "geng.161@buckeyemail.osu.edu"
     @State private var password = "random_blabla1234"
@@ -25,7 +22,7 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             ZStack{
-                
+                //background design
                 Color.customPurple.ignoresSafeArea()
                 Circle()
                     .offset(y: 90)
@@ -39,6 +36,7 @@ struct LoginView: View {
                     Spacer()
                         .frame(height: 200)
                     
+                    //Login text and fields for user entry
                     Text("Login")
                         .font(.largeTitle)
                         .bold()
@@ -50,14 +48,13 @@ struct LoginView: View {
                         .cornerRadius(10)
                         .textInputAutocapitalization(.never)
                         .border(.red, width: CGFloat(wrongUsername))
-                        
-                    
                     SecureField("Password", text: $password)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
                         .border(.red, width: CGFloat(wrongPassword))
+                    
                     
                     Button("Login") {
                         loginFailed = false
@@ -76,14 +73,12 @@ struct LoginView: View {
                     
                     NavigationLink(destination: SignUpView()) { Text("Create an account").padding(15)
                     }
-                    //                    Spacer()
-                    //                        .frame(height: 0)
                     
                     NavigationLink(destination: ResetPassword()) { Text("Reset Password")}
+                    
                     Spacer()
                         .frame(height: 20)
                     
-
                     NavigationLink(destination: HomeScreenView(), isActive: $showingHomeScreen) {
                     }
                     
@@ -99,6 +94,7 @@ struct LoginView: View {
         
     }
     
+    //back end work
     func authenticateUser(username: String, password: String) {
         let semaphore = DispatchSemaphore(value: 0)
         // prepare json data

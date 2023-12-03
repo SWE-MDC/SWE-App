@@ -8,11 +8,6 @@
 import SwiftUI
 import UIKit
 
-//NOT for admin use
-//view future events? link to google calendar
-//check into current event
-//settings/view profile
-
 struct HomeScreenView: View {
     
     @State private var width = UIScreen.main.bounds.width
@@ -27,7 +22,6 @@ struct HomeScreenView: View {
             ZStack{
                 Color.customPurple
                 
-
                 VStack{
                     Text("Latest Events")
                         .font(.largeTitle)
@@ -35,53 +29,41 @@ struct HomeScreenView: View {
                         .position(x: width/2, y: 120)
                         .foregroundColor(.white)
                     
-                    
-                    
-
-                List(events) {e in
+                    //list of all events in database in order by date
+                    List(events) {e in
                         EventRow(event: e)
-                    //Spacer()
                         .foregroundColor(.black)
                         .listRowBackground(
-                                               RoundedRectangle(cornerRadius: 5)
-                                                   .background(.clear)
-                                                   .foregroundColor(.white)
-                                                   .padding(
-                                                       EdgeInsets(
-                                                           top: 2,
-                                                           leading: 10,
-                                                           bottom: 2,
-                                                           trailing: 10
-                                                       )
-                                                   )
-                                           )
-                     .listRowSeparator(.hidden)
-
-                        //.listRowSeparatorTint(.customPurple)
-
+                            RoundedRectangle(cornerRadius: 5)
+                                .background(.clear)
+                                .foregroundColor(.white)
+                                .padding(
+                                    EdgeInsets(
+                                        top: 2,
+                                        leading: 10,
+                                        bottom: 2,
+                                        trailing: 10
+                                                )
+                                        )
+                                )
+                        .listRowSeparator(.hidden)
                     }
-                .scrollContentBackground(.hidden)
-                            .frame(width: 400, height: 570)
+                    .scrollContentBackground(.hidden)
+                    .frame(width: 400, height: 570)
                     .position(x: width/2, y: 60)
                     
-                    
-                    
-                
-
                     
                     NavigationLink(destination: LoginView()) {
                             Text("Log Out")
                         }
-    
                         .font(.system(size: 28, design: .rounded)
                             .weight(.bold))
                         .foregroundColor(Color.white)
                         .cornerRadius(10)
                         .padding([.bottom], 40)
-                    
                 }
+                
                 //used to display side bar menu
-                //put inside zstack
                 GeometryReader { _ in
                     HStack {
                         Spacer()
@@ -95,12 +77,8 @@ struct HomeScreenView: View {
                 .background(Color.black.opacity(showMenu ? 0.5 : 0))
             } //end of Zstack
             .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-//            .navigationTitle("Menu:")
-//            .navigationBarTitleDisplayMode(.inline) //lines title up with icon
-
 
             .toolbar{
-                
                 Button{
                     //allows user to toggle the menu side bar
                     self.showMenu.toggle()
@@ -123,6 +101,7 @@ struct HomeScreenView: View {
             do {
                 let event = try await getEvents()
                 events = event.events
+                //orders events by date
                 events.sort {
                     $0.date < $1.date
                 }
@@ -137,13 +116,12 @@ struct HomeScreenView: View {
         }
     }
     
+    //layout for each individual event
     struct EventRow: View {
         let event: Event
         var body: some View {
-            
             VStack(alignment: .leading) {
                 NavigationLink(destination: UserEventDetailView(eventId: event.id)) {
-                    
                     
                     VStack(alignment: .leading){
                         Text(event.title)
