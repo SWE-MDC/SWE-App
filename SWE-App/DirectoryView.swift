@@ -68,12 +68,6 @@ struct DirectoryView: View {
                 }
             }
         } //end navigation view
-        
-        
-        
-        NavigationLink(destination: HomeScreenView()) { Text("Back to Home Screen")}
-            .frame(width: 300, height: 50)
-            .foregroundStyle(.black)
     } //end body
 } //end directory view
 
