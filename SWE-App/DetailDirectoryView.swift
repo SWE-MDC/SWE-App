@@ -11,6 +11,7 @@ struct DetailDirectoryView: View {
     let contact: Contact
     
     var body: some View {
+        //detailed view for each individual contact
         VStack {
             Image(contact.image)
                 .resizable()

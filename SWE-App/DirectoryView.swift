@@ -8,8 +8,6 @@
 import SwiftUI
 import Foundation
 
-//TODO: add a go back home button
-
 struct DirectoryView: View {
     
     @State private var showMenu: Bool = false
@@ -22,13 +20,14 @@ struct DirectoryView: View {
         NavigationView {
             
             ZStack {
+                //complete list of contacts in directory
                 List(contacts) { contact in
                     NavigationLink(destination: DetailDirectoryView(contact: contact)){
                         ContactRow(contact: contact)
                     }
                 } .navigationBarTitle("Directory")
                 
-                
+                //side menu
                 GeometryReader { _ in
                     HStack {
                         Spacer()
@@ -40,13 +39,6 @@ struct DirectoryView: View {
                 }
                 //when side menu is open, it darkens the rest of the screen
                 .background(Color.black.opacity(showMenu ? 0.5 : 0))
-                
-                
-                
-               
-                
-                
-                
             }
             
             .toolbar{
@@ -78,6 +70,7 @@ struct ContactRow: View {
     let contact: Contact
     var body: some View {
         
+        //each individual contact row
         HStack{
             Image(contact.image)
                 .resizable()
