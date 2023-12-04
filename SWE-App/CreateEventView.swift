@@ -37,7 +37,7 @@ struct CreateEventView: View {
                         ScrollView{
                             TextField("Event Name/Title", text: $eventName)
                                 .padding()
-                                .frame(width: 300, height: 50)
+                                .frame(width: 360, height: 50)
                                 .background(Color.black.opacity(0.05))
                                 .cornerRadius(10)
                                 .textInputAutocapitalization(.never)
@@ -48,20 +48,20 @@ struct CreateEventView: View {
                                 //DatePicker("Date & Time: ", selection: $currentTime, in: Date()...).labelsHidden() use this if you don't want the label to show.
                             }
                             .padding()
-                            .frame(width: 300, height: 80)
+                            .frame(width: 360, height: 80)
                             .background(Color.black.opacity(0.05))
                             .cornerRadius(10)
                             
                             TextField("Event Location", text: $eventLocation)
                                 .padding()
-                                .frame(width: 300, height: 50)
+                                .frame(width: 360, height: 50)
                                 .background(Color.black.opacity(0.05))
                                 .cornerRadius(10)
                                 .textInputAutocapitalization(.never)
                             
                             TextField("Event Details", text: $eventDetails, axis: .vertical)
                                 .padding()
-                                .frame(width: 300, height: 200)
+                                .frame(width: 360, height: 200)
                                 .background(Color.black.opacity(0.05))
                                 .cornerRadius(10)
                                 .textInputAutocapitalization(.never)
