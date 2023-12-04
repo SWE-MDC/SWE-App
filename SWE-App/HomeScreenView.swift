@@ -3,6 +3,7 @@
 //  SWE-App
 //
 //  Created by Sam Weigman on 10/10/23.
+// This is a simple comment.
 //
 
 import SwiftUI
